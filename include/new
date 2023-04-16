@@ -1,0 +1,20 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_NEW_INC__
+#define __NEKOXX_NEW_INC__
+
+#include<exception>
+
+namespace std {
+	class bad_alloc : public exception {
+	public:
+		static int id;
+		virtual const char *what() { return "std::bad_alloc"; }
+	};
+};
+
+#endif	// __NEKOXX_NEW_INC__

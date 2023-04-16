@@ -1,0 +1,19 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+/*	Internal tools		*/
+#ifndef __NEKOXX_BITS_LIBNEKOXX_INC__
+#define __NEKOXX_BITS_LIBNEKOXX_INC__
+
+#include<stdlib.h>
+
+namespace __libnekoxx {
+	void *malloc(size_t size);
+	void free(void *p);
+	char *strdup(const char *src);
+};
+
+#endif	// __NEKOXX_BITS_LIBNEKOXX_INC__
