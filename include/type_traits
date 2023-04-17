@@ -100,7 +100,7 @@ __libnekoxx_typehelper_u(is_integral_helper, long long);
 }
 template <class T>
 struct is_integral
-	: public __libnekoxx::is_integral_helper<remove_cv<T>::type> {
+	: public __libnekoxx::is_integral_helper<remove_cv_t<T>> {
 };
 // clang-format off
 namespace __libnekoxx
@@ -112,7 +112,7 @@ __libnekoxx_typehelper(is_floating_point_helper, long double);
 }
 template <class T>
 struct is_floating_point
-	: public __libnekoxx::is_floating_point_helper<remove_cv<T>::type> {};
+	: public __libnekoxx::is_floating_point_helper<remove_cv_t<T>> {};
 
 template<class T> struct is_array : std::false_type {};
 template<class T> struct is_array<T[]> : std::true_type {};
