@@ -15,25 +15,31 @@
 
 namespace std
 {
-	class exception {
-	public:
-		exception() noexcept {}
-		exception(const exception &other) noexcept {}
+class exception {
+    public:
+	exception() noexcept
+	{
+	}
+	exception(const exception &other) noexcept
+	{
+	}
 
-		virtual ~exception() {}
+	virtual ~exception()
+	{
+	}
 
-		exception &operator = (const exception &other) noexcept
-		{
-			return *this;
-		}
+	exception &operator=(const exception &other) noexcept
+	{
+		return *this;
+	}
 
-		virtual const char *what()
-		{
-			return "std::exception";
-		}
-	};
+	virtual const char *what()
+	{
+		return "std::exception";
+	}
+};
 
-	void terminate() noexcept;
+void terminate() noexcept;
 };
 
 #endif // __NEKOXX_EXCEPTION_INC__

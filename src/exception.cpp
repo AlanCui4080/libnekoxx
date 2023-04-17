@@ -4,13 +4,14 @@
  *	Copyright (C) 2023 Ziyao.
  */
 
-#include<stdlib.h>
+#include <stdlib.h>
 
-#include<exception>
+#include <exception>
 
-namespace std {
-	void terminate() noexcept
-	{
-		abort();
-	}
-};	// namespace std
+namespace std
+{
+void terminate() noexcept
+{
+	abort();
+}
+}; // namespace std

@@ -20,23 +20,28 @@
 extern jmp_buf __nekoTryEnv;
 extern void *__nekoExceptionObj;
 
-#define __nthrow(obj)							\
-	do {								\
-		if (!__nekoExceptionObj)				\
-			std::terminate();				\
-		__nekoExceptionObj = new (__nekoExceptionObj) obj;	\
-		longjmp(__nekoTryEnv, 1);				\
+#define __nthrow(obj)                                              \
+	do {                                                       \
+		if (!__nekoExceptionObj)                           \
+			std::terminate();                          \
+		__nekoExceptionObj = new (__nekoExceptionObj) obj; \
+		longjmp(__nekoTryEnv, 1);                          \
 	} while (0)
 
-#define __ntry {							\
-		int __exception[64];					\
-		__nekoExceptionObj = __exception;			\
+#define __ntry                                    \
+	{                                         \
+		int __exception[64];              \
+		__nekoExceptionObj = __exception; \
 		if (!setjmp(__nekoTryEnv))
 
-#define __ncatch(n) else {						\
-			std::exception &n =				\
-				*((std::exception*)(__exception));	\
+#define __ncatch(n) \
+	else        \
+	{           \
+		std::exception &n = *((std::exception *)(__exception));
 
-#define __netry } __nekoExceptionObj = NULL; }
+#define __netry                    \
+	}                          \
+	__nekoExceptionObj = NULL; \
+	}
 
 #endif // __NEKOXX_NEKOEXCEPTION_INC__
