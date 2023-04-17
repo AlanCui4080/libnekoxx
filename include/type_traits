@@ -3,8 +3,8 @@
  *	By MIT License.
  *	Copyright (c) 2023 AlanCui4080.
  */
-#ifndef __NEKOXX_TYPE_TRASITS_INC__
-#define __NEKOXX_TYPE_TRASITS_INC__
+#ifndef __NEKOXX_TYPE_TRAITS_INC__
+#define __NEKOXX_TYPE_TRAITS_INC__
 
 #include <cstddef>
 
@@ -78,7 +78,7 @@ template <class T>
 struct is_null_pointer : is_same<nullptr_t, typename remove_cv<T>::type> {
 };
 
-#include <bits/type_trasits_macro>
+#include <bits/type_traits_macro>
 
 namespace __libnekoxx
 {
@@ -167,8 +167,8 @@ struct add_lvalue_reference : public __libnekoxx::add_lvref_helper<T> {
 template <typename T>
 struct add_rvalue_reference : public __libnekoxx::add_rvref_helper<T> {
 };
-#ifdef __libnekocxx_wip_type_trasits
-#warning "A WIP library (type_trasits) has been used."
+#ifdef __libnekocxx_wip_type_traits
+#warning "A WIP library (type_traits) has been used."
 template <class T> struct is_member_object_pointer;
 template <class T> struct is_member_function_pointer;
 template <class T> struct is_enum;
@@ -463,7 +463,7 @@ inline constexpr bool conjunction_v = conjunction<B...>::value;
 template <class... B>
 inline constexpr bool disjunction_v = disjunction<B...>::value;
 template <class B> inline constexpr bool negation_v = negation<B>::value;
-#endif //__libnekocxx_wip_type_trasits
+#endif //__libnekocxx_wip_type_traits
 
 } // namespace std
-#endif //__NEKOXX_TYPE_TRASITS_INC__
+#endif //__NEKOXX_TYPE_TRAITS_INC__
