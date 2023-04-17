@@ -43,6 +43,8 @@ clean:
 disbuild: clean
 	@echo Removing libraries...
 	-@$(RM) $(LIBS)
+
+distclean: disbuild
 	@echo Removing dep.mk
 	-@$(RM) dep.mk
 
