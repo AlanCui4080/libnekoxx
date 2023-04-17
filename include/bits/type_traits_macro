@@ -1,0 +1,17 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 AlanCui4080.
+ */
+#ifndef __NEKOXX_BITS_TYPE_TRAITS_MACRO_INC__
+#define __NEKOXX_BITS_TYPE_TRAITS_MACRO_INC__
+
+
+#define __libnekoxx_typehelper(name, type)           \
+	template <> struct name<type> : public true_type {}
+
+#define __libnekoxx_typehelper_u(name, type)      \
+	template <> struct name<type> : public true_type {};        \
+	template <> struct name<unsigned type> : public true_type {}
+
+#endif //__NEKOXX_BITS_TYPE_TRAITS_MACRO_INC__
