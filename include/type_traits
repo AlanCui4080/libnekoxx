@@ -201,13 +201,51 @@ struct conditional<false, T, F> : public __libnekoxx::type_identity<F> {
 template <bool B, class T, class F>
 using conditional_t = typename conditional<B, T, F>::type;
 
-#include <utility>
-
-template <class... Bn> struct conjunction : public true_type {};
+template <class... Bn> struct conjunction : public true_type {
+};
 template <class B> struct conjunction<B> : public B {
 };
 template <class B, class... Bn>
-struct conjunction<B, Bn...> : public conditional_t<B::value, conjunction<Bn...>, B> {};
+struct conjunction<B, Bn...>
+	: public conditional_t<B::value, conjunction<Bn...>, B> {
+};
+}
+namespace std
+{
+namespace __libnekoxx
+{
+namespace type_traits
+{
+template <typename T> constexpr bool always_false = false;
+template <typename T>
+typename ::std::add_rvalue_reference<T>::type declval() noexcept
+{
+	static_assert(always_false<T>,
+		      "Declval not allowed in an evaluated context.");
+}
+}
+template <class _To> static void convertible_slot(_To);
+template <class _To, class _From>
+struct is_convertible_helper : public true_type {
+	template <class _To1, class _From1,
+		  class _Trap = decltype(convertible_slot<_To1>(
+			  type_traits::declval<_From1>()))>
+	struct is_convertible_trap : public true_type {
+	};
+};
+template <class _From>
+struct is_convertible_helper<_From, void> : public false_type {
+};
+template <class _To>
+struct is_convertible_helper<void, _To> : public false_type {
+};
+}
+
+template <class _From, class _To>
+struct is_convertible : public __libnekoxx::is_convertible_helper<_From, _To> {
+};
+template <class _From, class _To>
+inline constexpr bool is_convertible_v = is_convertible<_From, _To>::value;
 
 #ifdef __libnekocxx_wip_type_traits
 #warning "A WIP library (type_traits) has been used."
