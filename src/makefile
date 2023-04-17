@@ -8,9 +8,9 @@ LD		= ld
 AR		= ar
 RANLIB		= ranlib
 RM		= rm
-CLANG_FORMAT = clang-format
-FIND = find
-XARGS = xargs
+CLANG_FORMAT	= clang-format
+FIND		= find
+XARGS		= xargs
 
 OBJS		:= nekoexception.o libnekoxx.o new.o abi.o
 
