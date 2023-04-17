@@ -2,10 +2,10 @@
 
 CXX="gcc -xc++"
 
-RED=$(echo -ne "\033[31m")
-GREEN=$(echo -ne "\033[32m")
-YELLOW=$(echo -ne "\033[33m")
-NONE=$(echo -ne "\033[39m")
+RED=$(printf "\033[31m")
+GREEN=$(printf "\033[32m")
+YELLOW=$(printf "\033[33m")
+NONE=$(printf "\033[39m")
 
 compile() {
 	if $CXX $1 -o /tmp/nekoxxtest.exec -xnone ../src/libnekoxx.a	\

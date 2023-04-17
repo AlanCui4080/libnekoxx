@@ -28,17 +28,20 @@ void __cxa_finalize(void *d)
 	if (!d) {
 		for (int i = 0; i < count; i++) {
 			if (destructors[i].f) {
-				destructors[i].f(destructors[i].a);
+				void (*f)(void *) = destructors[i].f;
 				destructors[i].f = 0;
+				f(destructors[i].a);
 			}
 		}
 		return;
 	}
 
 	for (int i = 0; i < count; i++) {
-		if (destructors[i].f && destructors[i].d == d)
-			destructors[i].f(destructors[i].a);
-		destructors[i].f = 0;
+		if (destructors[i].f && destructors[i].d == d) {
+			void (*f)(void *) = destructors[i].f;
+			destructors[i].f = 0;
+			f(destructors[i].a);
+		}
 	}
 	return;
 }

@@ -17,7 +17,7 @@ OBJS		:= nekoexception.o libnekoxx.o new.o abi.o exception.o
 LIBS		:= libnekoxx.so libnekoxx.a
 
 CXXFLAGS	+= -fno-exceptions -fno-rtti -fPIC -nostdinc++ -I../include \
-		  -std=c++17
+		  -std=c++17 -g -O0
 LDFLAGS		=
 
 
