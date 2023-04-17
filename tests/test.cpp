@@ -10,5 +10,9 @@ int main()
 	__nscatch(std::exception, e)
 		puts(e.what());
 	__necatch
+
+	char *s = new char[16];
+	s[0] = 0;
+	delete [] s;
 	return 0;
 }

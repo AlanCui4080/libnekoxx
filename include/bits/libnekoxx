@@ -10,6 +10,13 @@
 
 #include<stdlib.h>
 
+#if defined(__GNUC__) || defined(__CLANG__)
+	#define __NEKOXX_HIDDEN__ __attribute__ ((visibility ("hidden")))
+	#define __NEKOXX_WEAK__ __attribute__ ((weak))
+#else
+	#error "No implementation of __NEKOXX_HIDDEN__ on this compiler"
+#endif
+
 namespace __libnekoxx {
 	void *malloc(size_t size);
 	void free(void *p);
