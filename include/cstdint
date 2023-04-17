@@ -1,117 +1,50 @@
 /*
  *	libnekoxx
  *	By MIT License.
- *	Copyright (c) 2023 AlanCui4080.
+ *	Copyright (c) 2023 AlanCui4080 and Ziyao.
  */
 #ifndef __NEKOXX_CSTDINT_INC__
 #define __NEKOXX_CSTDINT_INC__
 
+#include<stdint.h>
+
 namespace std
 {
-	using int8_t = char;
-	using int16_t = short;
-	using int32_t = int;
-	using int64_t = long long;
+	using int8_t	= ::int8_t;
+	using int16_t	= ::int16_t;
+	using int32_t	= ::int32_t;
+	using int64_t	= ::int64_t;
 
-	using __int_fastest_t = long long;
+	using uint8_t	= ::uint8_t;
+	using uint16_t	= ::uint16_t;
+	using uint32_t	= ::uint32_t;
+	using uint64_t	= ::uint64_t;
 
-	using int_fast8_t = __int_fastest_t;
-	using int_fast16_t = __int_fastest_t;
-	using int_fast32_t = __int_fastest_t;
-	using int_fast64_t = __int_fastest_t;
+	using int_fast8_t	= ::int_fast8_t;
+	using int_fast16_t	= ::int_fast16_t;
+	using int_fast32_t	= ::int_fast32_t;
+	using int_fast64_t	= ::int_fast64_t;
 
-	using int_least8_t = char;
-	using int_least16_t = short;
-	using int_least32_t = int;
-	using int_least64_t = long long;
+	using uint_fast8_t	= ::uint_fast8_t;
+	using uint_fast16_t	= ::uint_fast16_t;
+	using uint_fast32_t	= ::uint_fast32_t;
+	using uint_fast64_t	= ::uint_fast64_t;
 
-	using intmax_t = long long;
-	using intptr_t = intmax_t;
+	using int_least8_t	= ::int_least8_t;
+	using int_least16_t	= ::int_least16_t;
+	using int_least32_t	= ::int_least32_t;
+	using int_least64_t	= ::int_least64_t;
 
-	using uint8_t = unsigned char;
-	using uint16_t = unsigned short;
-	using uint32_t = unsigned int;
-	using uint64_t = unsigned long long;
+	using uint_least8_t	= ::uint_least8_t;
+	using uint_least16_t	= ::uint_least16_t;
+	using uint_least32_t	= ::uint_least32_t;
+	using uint_least64_t	= ::uint_least64_t;
 
-	#define INT8_MIN    (-0x7f - 1)
-	#define INT16_MIN   (-0x7fff - 1)
-	#define INT32_MIN   (-0x7fffffff - 1)
-	#define INT64_MIN   (-0x7fffffffffffffff - 1)
+	using intmax_t	= ::intmax_t;
+	using uintmax_t	= ::uintmax_t;
+	using intptr_t	= ::intptr_t;
+	using uintptr_t	= ::uintptr_t;
 
-	#define INT8_MAX    0x7f
-	#define INT16_MAX   0x7fff
-	#define INT32_MAX   0x7fffffff
-	#define INT64_MAX   0x7fffffffffffffff
+}; // namespace std
 
-	#define UINT8_MAX   0xff
-	#define UINT16_MAX  0xffff
-	#define UINT32_MAX  0xffffffff
-	#define UINT64_MAX  0xffffffffffffffff
-
-	#define INT_LEAST8_MIN    (-0x7f - 1)
-	#define INT_LEAST16_MIN   (-0x7fff - 1)
-	#define INT_LEAST32_MIN   (-0x7fffffff - 1)
-	#define INT_LEAST64_MIN   (-0x7fffffffffffffff - 1)
-
-	#define INT_LEAST8_MAX    0x7f
-	#define INT_LEAST16_MAX   0x7fff
-	#define INT_LEAST32_MAX   0x7fffffff
-	#define INT_LEAST64_MAX   0x7fffffffffffffff
-
-	#define UINT_LEAST8_MAX   0xff
-	#define UINT_LEAST16_MAX  0xffff
-	#define UINT_LEAST32_MAX  0xffffffff
-	#define UINT_LEAST64_MAX  0xffffffffffffffff
-
-	#define INT_FAST8_MIN     (-0x7f - 1)
-	#define INT_FAST16_MIN    (-0x7fff - 1)
-	#define INT_FAST32_MIN    (-0x7fffffff - 1)
-	#define INT_FAST64_MIN    (-0x7fffffffffffffff - 1)
-
-	#define INT_FAST8_MAX     0x7f
-	#define INT_FAST16_MAX    0x7fff
-	#define INT_FAST32_MAX    0x7fffffff
-	#define INT_FAST64_MAX    0x7fffffffffffffff
-
-	#define UINT_FAST8_MAX    0xff
-	#define UINT_FAST16_MAX   0xffff
-	#define UINT_FAST32_MAX   0xffffffff
-	#define UINT_FAST64_MAX   0xffffffffffffffff
-
-	#define INTPTR_MIN        (-0x7fffffff - 1)
-	#define INTPTR_MAX        0x7fffffff
-	#define UINTPTR_MAX       0xffffffff
-
-	#define INT8_C(x)    (x)
-	#define INT16_C(x)   (x)
-	#define INT32_C(x)   ((x) + (INT32_MAX - INT32_MAX))
-	#define INT64_C(x)   ((x) + (INT64_MAX - INT64_MAX))
-
-	#define UINT8_C(x)   (x)
-	#define UINT16_C(x)  (x)
-	#define UINT32_C(x)  ((x) + (UINT32_MAX - UINT32_MAX))
-	#define UINT64_C(x)  ((x) + (UINT64_MAX - UINT64_MAX))
-
-	#define INTMAX_C(x)  ((x) + (INT64_MAX - INT64_MAX))
-	#define UINTMAX_C(x) ((x) + (UINT64_MAX - UINT64_MAX))
-
-	#define PTRDIFF_MIN  INT32_MIN
-	#define PTRDIFF_MAX  INT32_MAX
-
-	#define SIG_ATOMIC_MIN    INT32_MIN
-	#define SIG_ATOMIC_MAX    INT32_MAX
-
-	#define SIZE_MAX     UINT32_MAX
-
-	#define WCHAR_MIN    0
-	#define WCHAR_MAX    UINT16_MAX
-
-	#define WINT_MIN     0
-	#define WINT_MAX     UINT16_MAX
-
-	#define INTMAX_MIN        (-0x7fffffffffffffff - 1)
-	#define INTMAX_MAX        0x7fffffffffffffff
-	#define UINTMAX_MAX       0xffffffffffffffff
-} // namespace std
-
-#endif //__NEKOXX_CSTDINT_INC__
+#endif	// __NEKOXX_CSTDINT_INC__
