@@ -14,7 +14,7 @@ namespace __libnekoxx
 {
 
 template <typename T> constexpr bool always_false = false;
-}
+};
 template <typename T> typename add_rvalue_reference<T>::type declval() noexcept
 {
 	static_assert(__libnekoxx::always_false<T>,
