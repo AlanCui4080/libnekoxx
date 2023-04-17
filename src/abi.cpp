@@ -4,17 +4,17 @@
  *	Copyright (c) 2023 Ziyao.
  */
 
-#include<bits/libnekoxx>
+#include <bits/libnekoxx>
 
 extern "C" {
 
 #define __NEKOXX_DESTRUCTOR_MAX_NUM__ 256
 
-#include<stdlib.h>
+#include <stdlib.h>
 
 static int inited;
 static struct {
-	void (*f) (void *);
+	void (*f)(void *);
 	void *a;
 	void *d;
 } destructors[__NEKOXX_DESTRUCTOR_MAX_NUM__];
@@ -38,7 +38,7 @@ void __cxa_finalize(void *d)
 	for (int i = 0; i < count; i++) {
 		if (destructors[i].f && destructors[i].d == d)
 			destructors[i].f(destructors[i].a);
-			destructors[i].f = 0;
+		destructors[i].f = 0;
 	}
 	return;
 }
@@ -49,7 +49,7 @@ static void exit_handler()
 	return;
 }
 
-int __cxa_atexit(void (*destructor) (void *), void *arg, void *dso)
+int __cxa_atexit(void (*destructor)(void *), void *arg, void *dso)
 {
 	if (!inited) {
 		inited = 1;
@@ -60,12 +60,11 @@ int __cxa_atexit(void (*destructor) (void *), void *arg, void *dso)
 	if (i >= __NEKOXX_DESTRUCTOR_MAX_NUM__)
 		return -1;
 
-	destructors[i].f	= destructor;
-	destructors[i].a	= arg;
-	destructors[i].d	= dso;
+	destructors[i].f = destructor;
+	destructors[i].a = arg;
+	destructors[i].d = dso;
 	count = i + 1;
 
 	return 0;
 }
-
 };

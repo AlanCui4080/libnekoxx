@@ -4,9 +4,9 @@
  *	Copyright (c) 2023 Ziyao.
  */
 
-#include<setjmp.h>
+#include <setjmp.h>
 
-#include<nekoexception>
+#include <nekoexception>
 
 jmp_buf __nekoTryEnv;
 std::exception __nekoExceptionObj;

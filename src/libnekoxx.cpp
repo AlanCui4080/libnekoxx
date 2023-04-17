@@ -6,26 +6,27 @@
 
 /*	Internal tools	*/
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-#include<bits/libnekoxx>
+#include <bits/libnekoxx>
 
-namespace __libnekoxx {
-	void *malloc(size_t size)
-	{
-		return ::malloc(size);
-	}
+namespace __libnekoxx
+{
+void *malloc(size_t size)
+{
+	return ::malloc(size);
+}
 
-	void free(void *p)
-	{
-		::free(p);
-	}
+void free(void *p)
+{
+	::free(p);
+}
 
-	char *strdup(const char *src)
-	{
-		char *copy = (char*)malloc(strlen(src) + 1);
-		return copy ? strcpy(copy, src) : copy;
-	}
+char *strdup(const char *src)
+{
+	char *copy = (char *)malloc(strlen(src) + 1);
+	return copy ? strcpy(copy, src) : copy;
+}
 };

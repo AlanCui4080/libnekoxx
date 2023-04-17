@@ -1,7 +1,7 @@
-#include<stdio.h>
+#include <stdio.h>
 
 class foo {
-public:
+    public:
 	foo()
 	{
 		puts("Created");

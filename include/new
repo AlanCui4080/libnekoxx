@@ -7,14 +7,18 @@
 #ifndef __NEKOXX_NEW_INC__
 #define __NEKOXX_NEW_INC__
 
-#include<exception>
+#include <exception>
 
-namespace std {
-	class bad_alloc : public exception {
-	public:
-		static int id;
-		virtual const char *what() { return "std::bad_alloc"; }
-	};
+namespace std
+{
+class bad_alloc : public exception {
+    public:
+	static int id;
+	virtual const char *what()
+	{
+		return "std::bad_alloc";
+	}
+};
 };
 
-#endif	// __NEKOXX_NEW_INC__
+#endif // __NEKOXX_NEW_INC__

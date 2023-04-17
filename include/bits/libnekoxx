@@ -8,19 +8,20 @@
 #ifndef __NEKOXX_BITS_LIBNEKOXX_INC__
 #define __NEKOXX_BITS_LIBNEKOXX_INC__
 
-#include<stdlib.h>
+#include <stdlib.h>
 
 #if defined(__GNUC__) || defined(__CLANG__)
-	#define __NEKOXX_HIDDEN__ __attribute__ ((visibility ("hidden")))
-	#define __NEKOXX_WEAK__ __attribute__ ((weak))
+#define __NEKOXX_HIDDEN__ __attribute__((visibility("hidden")))
+#define __NEKOXX_WEAK__ __attribute__((weak))
 #else
-	#error "No implementation of __NEKOXX_HIDDEN__ on this compiler"
+#error "No implementation of __NEKOXX_HIDDEN__ on this compiler"
 #endif
 
-namespace __libnekoxx {
-	void *malloc(size_t size);
-	void free(void *p);
-	char *strdup(const char *src);
+namespace __libnekoxx
+{
+void *malloc(size_t size);
+void free(void *p);
+char *strdup(const char *src);
 };
 
-#endif	// __NEKOXX_BITS_LIBNEKOXX_INC__
+#endif // __NEKOXX_BITS_LIBNEKOXX_INC__
