@@ -89,14 +89,14 @@ namespace __libnekoxx
 template <typename> struct is_integral_helper : public false_type {
 };
 __libnekoxx_typehelper(is_integral_helper, bool);
-__libnekoxx_typehelper_su(is_integral_helper, char);
+__libnekoxx_typehelper_u(is_integral_helper, char);
 __libnekoxx_typehelper(is_integral_helper, char16_t);
 __libnekoxx_typehelper(is_integral_helper, char32_t);
 __libnekoxx_typehelper(is_integral_helper, wchar_t);
-__libnekoxx_typehelper_su(is_integral_helper, short);
-__libnekoxx_typehelper_su(is_integral_helper, int);
-__libnekoxx_typehelper_su(is_integral_helper, long);
-__libnekoxx_typehelper_su(is_integral_helper, long long);
+__libnekoxx_typehelper_u(is_integral_helper, short);
+__libnekoxx_typehelper_u(is_integral_helper, int);
+__libnekoxx_typehelper_u(is_integral_helper, long);
+__libnekoxx_typehelper_u(is_integral_helper, long long);
 }
 template <class T>
 struct is_integral
