@@ -1,0 +1,12 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_CASSERT_INC__
+#define __NEKOXX_CASSERT_INC__
+
+#include<assert.h>
+
+#endif	// __NEKOXX_CASSERT_INC__

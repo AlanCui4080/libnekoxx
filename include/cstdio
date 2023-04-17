@@ -1,0 +1,71 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_CSTDIO_INC__
+#define __NEKOXX_CSTDIO_INC__
+
+#include<stdio.h>
+
+#include<cstddef>
+
+namespace std {
+
+using FILE	= ::FILE;
+using fpos_t	= ::fpos_t;
+
+using ::fopen;
+using ::freopen;
+using ::fclose;
+using ::fflush;
+using ::setbuf;
+using ::setvbuf;
+
+using ::fread;
+using ::fwrite;
+
+using ::fgetc;
+using ::getc;
+using ::fputc;
+using ::putc;
+using ::fputs;
+using ::getchar;
+using ::gets;
+using ::putchar;
+using ::puts;
+using ::ungetc;
+
+using ::scanf;
+using ::fscanf;
+using ::sscanf;
+
+using ::vscanf;
+using ::vfscanf;
+using ::vsscanf;
+
+using ::printf;
+using ::fprintf;
+using ::sprintf;
+using ::snprintf;
+
+using ::ftell;
+using ::fgetpos;
+using ::fseek;
+using ::fsetpos;
+using ::rewind;
+
+using ::clearerr;
+using ::feof;
+using ::ferror;
+using ::perror;
+
+using ::remove;
+using ::rename;
+using ::tmpfile;
+using ::tmpnam;
+
+};	// namepspace std
+
+#endif	// __NEKOXX_CSTDIO_INC__

@@ -1,0 +1,21 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_CLOCALE_INC__
+#define __NEKOXX_CLOCALE_INC__
+
+#include<locale.h>
+
+namespace std {
+
+using lconv = ::lconv;
+
+using ::setlocale;
+using ::localeconv;
+
+};	// namespace std
+
+#endif	// __NEKOXX_CLOCALE_INC__

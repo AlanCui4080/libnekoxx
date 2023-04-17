@@ -1,0 +1,12 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_CERRNO_INC__
+#define __NEKOXX_CERRNO_INC__
+
+#include <errno.h>
+
+#endif	// __NEKOXX_CERRNO_INC__

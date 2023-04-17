@@ -1,0 +1,34 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (C) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_CTIME_INC__
+#define __NEKOXX_CTIME_INC__
+
+#include<time.h>
+
+namespace std {
+
+using clock_t	= ::clock_t;
+using size_t	= ::size_t;
+using time_t	= ::time_t;
+using tm	= ::tm;
+using timespec	= ::timespec;
+
+using ::clock;
+using ::time;
+using ::difftime;
+using ::timespec_get;
+
+using ::ctime;
+using ::asctime;
+using ::strftime;
+using ::gmtime;
+using ::localtime;
+using ::mktime;
+
+};	// namespace std
+
+#endif	// __NEKOXX_CTIME_INC__
