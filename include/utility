@@ -14,15 +14,13 @@ namespace __libnekoxx
 {
 
 template <typename T> constexpr bool always_false = false;
-
 }
-template <typename T>
-typename std::add_rvalue_reference<T>::type declval() noexcept
+template <typename T> typename add_rvalue_reference<T>::type declval() noexcept
 {
 	static_assert(__libnekoxx::always_false<T>,
 		      "Declval not allowed in an evaluated context.");
 }
-}
+};
 #ifdef __libnekocxx_wip_utility
 // integer comparison functions
 template <class T, class U> constexpr bool cmp_equal(T t, U u) noexcept;

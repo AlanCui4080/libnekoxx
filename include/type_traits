@@ -99,8 +99,7 @@ __libnekoxx_typehelper_u(is_integral_helper, long);
 __libnekoxx_typehelper_u(is_integral_helper, long long);
 }
 template <class T>
-struct is_integral
-	: public __libnekoxx::is_integral_helper<remove_cv_t<T>> {
+struct is_integral : public __libnekoxx::is_integral_helper<remove_cv_t<T>> {
 };
 // clang-format off
 namespace __libnekoxx
@@ -190,6 +189,26 @@ struct add_lvalue_reference : public __libnekoxx::add_lvref_helper<T> {
 template <typename T>
 struct add_rvalue_reference : public __libnekoxx::add_rvref_helper<T> {
 };
+
+template <bool B, class T, class F>
+struct conditional : public __libnekoxx::type_identity<T> {
+};
+
+template <class T, class F>
+struct conditional<false, T, F> : public __libnekoxx::type_identity<F> {
+};
+
+template <bool B, class T, class F>
+using conditional_t = typename conditional<B, T, F>::type;
+
+#include <utility>
+
+template <class... Bn> struct conjunction : public true_type {};
+template <class B> struct conjunction<B> : public B {
+};
+template <class B, class... Bn>
+struct conjunction<B, Bn...> : public conditional_t<B::value, conjunction<Bn...>, B> {};
+
 #ifdef __libnekocxx_wip_type_traits
 #warning "A WIP library (type_traits) has been used."
 template <class T> struct is_member_object_pointer;
