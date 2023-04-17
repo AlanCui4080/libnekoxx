@@ -9,5 +9,4 @@
 #include <nekoexception>
 
 jmp_buf __nekoTryEnv;
-std::exception __nekoExceptionObj;
-int __nekoTryTop;
+void * __nekoExceptionObj;

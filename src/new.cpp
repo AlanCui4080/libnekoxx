@@ -13,7 +13,17 @@
 
 #include <bits/libnekoxx>
 
-void *operator new(size_t count)
+void * operator new (size_t count, void *p)
+{
+	return p;
+}
+
+void * operator new [] (size_t count, void *p)
+{
+	return p;
+}
+
+void * operator new (size_t count)
 {
 	void *p = __libnekoxx::malloc(count);
 	if (!p)
@@ -21,7 +31,7 @@ void *operator new(size_t count)
 	return p;
 }
 
-void *operator new[](size_t count)
+void * operator new [] (size_t count)
 {
 	void *p = __libnekoxx::malloc(count);
 	if (!p)

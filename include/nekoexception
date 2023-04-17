@@ -18,46 +18,25 @@
 #include <exception>
 
 extern jmp_buf __nekoTryEnv;
-extern int __nekoTryTop;
-extern std::exception __nekoExceptionObj;
+extern void *__nekoExceptionObj;
 
-#define __nthrow(obj)                       \
-	do {                                \
-		__nekoExceptionObj = (obj); \
-		if (!__nekoTryTop)          \
-			abort();            \
-		longjmp(__nekoTryEnv, 1);   \
+#define __nthrow(obj)							\
+	do {								\
+		if (!__nekoExceptionObj)				\
+			std::terminate();				\
+		__nekoExceptionObj = new (__nekoExceptionObj) obj;	\
+		longjmp(__nekoTryEnv, 1);				\
 	} while (0)
 
-#define __ntry                                                \
-	{                                                     \
-		jmp_buf __buf;                                \
-		memcpy(__buf, __nekoTryEnv, sizeof(jmp_buf)); \
-		__nekoTryTop++;                               \
-		if (!setjmp(__nekoTryEnv)) {
-#define __nscatch(t, n)                                 \
-	}                                               \
-	else                                            \
-	{                                               \
-		if (&__nekoExceptionObj.id == &t::id) { \
-			t n = __nekoExceptionObj;
-#define __ncatch(t, n)                              \
-	}                                           \
-	else if (&__nekoExceptionObj::id == &t::id) \
-	{                                           \
-		t n = __nekoExceptionObj;
-#define __necatch                                 \
-	}                                         \
-	else                                      \
-	{                                         \
-		if (__nekoTryTop) {               \
-			__nekoTryTop--;           \
-			longjmp(__nekoTryEnv, 1); \
-		} else                            \
-			abort();                  \
-	}                                         \
-	}                                         \
-	__nekoTryTop--;                           \
-	}
+#define __ntry {							\
+		int __exception[64];					\
+		__nekoExceptionObj = __exception;			\
+		if (!setjmp(__nekoTryEnv))
+
+#define __ncatch(n) else {						\
+			std::exception &n =				\
+				*((std::exception*)(__exception));	\
+
+#define __netry } __nekoExceptionObj = NULL; }
 
 #endif // __NEKOXX_NEKOEXCEPTION_INC__
