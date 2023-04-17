@@ -1,13 +1,16 @@
 #	libnekoxx
 #	Makefile for libnekoxx
 #	By MIT License.
-#	Copyright (c) 2023 Ziyao.
+#	Copyright (c) 2023 Ziyao and AlanCui4080.
 
 CXX		= gcc -xc++
 LD		= ld
 AR		= ar
 RANLIB		= ranlib
 RM		= rm
+CLANG_FORMAT = clang-format
+FIND = find
+XARGS = xargs
 
 OBJS		:= nekoexception.o libnekoxx.o new.o abi.o
 
@@ -16,6 +19,10 @@ LIBS		:= libnekoxx.so libnekoxx.a
 CXXFLAGS	= -fno-exceptions -fno-rtti -fPIC -nostdinc++ -I../include \
 		  -std=c++17
 LDFLAGS		=
+
+
+CXXCODE_DIR = . ../tests
+NOSUFFIX_HEADER_DIR = ../include
 
 all: dep.mk $(LIBS)
 
@@ -48,5 +55,11 @@ disbuild: clean
 distclean: disbuild
 	@echo Removing dep.mk
 	-@$(RM) dep.mk
+
+format:
+	@echo Formatting CXX Codes...
+	@$(FIND) $(CXXCODE_DIR) -name "*.cpp" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
+	@echo Formatting Headers...
+	@$(FIND) $(NOSUFFIX_HEADER_DIR) -name "*" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
 
 include dep.mk
