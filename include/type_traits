@@ -124,8 +124,8 @@ template<class T> struct is_pointer<T* const> : std::true_type {};
 template<class T> struct is_pointer<T* volatile> : std::true_type {};
 template<class T> struct is_pointer<T* const volatile> : std::true_type {};
 
-template<class T> struct is_lvalue_leference     : std::false_type {};
-template<class T> struct is_lvalue_leference<T&&> : std::true_type {};
+template<class T> struct is_rvalue_reference     : std::false_type {};
+template<class T> struct is_rvalue_reference<T&&> : std::true_type {};
 
 template<class T> struct is_lvalue_reference     : std::false_type {};
 template<class T> struct is_lvalue_reference<T&> : std::true_type {};
