@@ -110,9 +110,31 @@ template <class _R, class _Fn, class... ArgTypes> struct is_invocable_r;
 template <class _Fn, class... _ArgTypes> struct is_nothrow_invocable;
 template <class _R, class _Fn, class... ArgTypes> struct is_nothrow_invocable_r;
 
-template <class T> struct remove_const;
-template <class T> struct remove_volatile;
-template <class T> struct remove_cv;
+template <class T> struct remove_cv {
+	using type = T;
+};
+template <class T> struct remove_cv<const T> {
+	using type = T;
+};
+template <class T> struct remove_cv<volatile T> {
+	using type = T;
+};
+template <class T> struct remove_cv<const volatile T> {
+	using type = T;
+};
+template <class T> struct remove_const {
+	using type = T;
+};
+template <class T> struct remove_const<const T> {
+	using type = T;
+};
+template <class T> struct remove_volatile {
+	using type = T;
+};
+template <class T> struct remove_volatile<volatile T> {
+	using type = T;
+};
+
 template <class T> struct add_const;
 template <class T> struct add_volatile;
 template <class T> struct add_cv;
