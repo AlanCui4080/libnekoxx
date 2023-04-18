@@ -19,9 +19,9 @@
 
 namespace __libnekoxx
 {
-void *malloc(size_t size);
-void free(void *p);
-char *strdup(const char *src);
-};
+	void *malloc(size_t size);
+	void free(void *p);
+	char *strdup(const char *src);
+}; // namespace __libnekoxx
 
 #endif // __NEKOXX_BITS_LIBNEKOXX_INC__

@@ -14,19 +14,19 @@
 
 namespace __libnekoxx
 {
-void *malloc(size_t size)
-{
-	return ::malloc(size);
-}
+	void *malloc(size_t size)
+	{
+		return ::malloc(size);
+	}
 
-void free(void *p)
-{
-	::free(p);
-}
+	void free(void *p)
+	{
+		::free(p);
+	}
 
-char *strdup(const char *src)
-{
-	char *copy = (char *)malloc(strlen(src) + 1);
-	return copy ? strcpy(copy, src) : copy;
-}
-};
+	char *strdup(const char *src)
+	{
+		char *copy = (char *)malloc(strlen(src) + 1);
+		return copy ? strcpy(copy, src) : copy;
+	}
+}; // namespace __libnekoxx

@@ -10,8 +10,8 @@
 
 namespace std
 {
-void terminate() noexcept
-{
-	abort();
-}
+	void terminate() noexcept
+	{
+		abort();
+	}
 }; // namespace std

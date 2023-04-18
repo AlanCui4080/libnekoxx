@@ -10,16 +10,16 @@
 
 namespace std
 {
-namespace __libnekoxx
-{
-template <typename T> constexpr bool always_false = false;
-}
-template <typename T>
-typename ::std::add_rvalue_reference<T>::type declval() noexcept
-{
-	static_assert(__libnekoxx::always_false<T>,
-		      "Declval not allowed in an evaluated context.");
-}
+	namespace __libnekoxx
+	{
+		template <typename T> constexpr bool always_false = false;
+	}
+	template <typename T>
+	typename ::std::add_rvalue_reference<T>::type declval() noexcept
+	{
+		static_assert(__libnekoxx::always_false<T>,
+			      "Declval not allowed in an evaluated context.");
+	}
 };
 #ifdef __libnekocxx_wip_utility
 // integer comparison functions
@@ -152,10 +152,10 @@ template <class T> void as_const(const T &&) = delete;
 // deprecated
 namespace std::rel_ops
 {
-template <class T> bool operator!=(const T &, const T &);
-template <class T> bool operator>(const T &, const T &);
-template <class T> bool operator<=(const T &, const T &);
-template <class T> bool operator>=(const T &, const T &);
+	template <class T> bool operator!=(const T &, const T &);
+	template <class T> bool operator>(const T &, const T &);
+	template <class T> bool operator<=(const T &, const T &);
+	template <class T> bool operator>=(const T &, const T &);
 }
 #endif
 #endif //__NEKOXX_UTILITY_INC__

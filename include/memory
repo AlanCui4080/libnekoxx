@@ -11,32 +11,32 @@
 
 namespace std
 {
-template <class T> class allocator {
-    public:
-	typedef T value_type;
-	typedef std::size_t size_type;
-	typedef std::ptrdiff_t difference_type;
+	template <class T> class allocator {
+	    public:
+		typedef T value_type;
+		typedef std::size_t size_type;
+		typedef std::ptrdiff_t difference_type;
 
-	T *allocate(std::size_t n, const void *hint = 0)
+		T *allocate(std::size_t n, const void *hint = 0)
+		{
+			(void)hint;
+			return new T[n];
+		}
+
+		void deallocate(T *p, std::size_t n = 0)
+		{
+			(void)n;
+			delete[] p;
+		}
+	};
+
+	template <class T1, class T2>
+	bool operator==(const allocator<T1> &l, const allocator<T2> &r)
 	{
-		(void)hint;
-		return new T[n];
+		(void)l;
+		(void)r;
+		return true;
 	}
-
-	void deallocate(T *p, std::size_t n = 0)
-	{
-		(void)n;
-		delete[] p;
-	}
-};
-
-template <class T1, class T2>
-bool operator==(const allocator<T1> &l, const allocator<T2> &r)
-{
-	(void)l;
-	(void)r;
-	return true;
-}
-};
+}; // namespace std
 
 #endif // __NEKOXX_ALLOCATOR_INC__

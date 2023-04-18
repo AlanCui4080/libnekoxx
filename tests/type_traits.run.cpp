@@ -46,36 +46,36 @@ int main()
 	TEST_TRUE((is_integral_v<long>));
 	TEST_TRUE((is_integral_v<long long>));
 
-        TEST_FALSE((is_floating_point_v<float*>));
-        TEST_TRUE((is_floating_point_v<float>));
-        TEST_TRUE((is_floating_point_v<double>));
-        TEST_TRUE((is_floating_point_v<long double>));
+	TEST_FALSE((is_floating_point_v<float *>));
+	TEST_TRUE((is_floating_point_v<float>));
+	TEST_TRUE((is_floating_point_v<double>));
+	TEST_TRUE((is_floating_point_v<long double>));
 
-        TEST_FALSE((is_array_v<int>));
-        TEST_TRUE((is_array_v<int[]>));
-        TEST_TRUE((is_array_v<int[1]>));
+	TEST_FALSE((is_array_v<int>));
+	TEST_TRUE((is_array_v<int[]>));
+	TEST_TRUE((is_array_v<int[1]>));
 
-        TEST_FALSE((is_lvalue_reference_v<int>));
-        TEST_TRUE((is_lvalue_reference_v<int&>));
+	TEST_FALSE((is_lvalue_reference_v<int>));
+	TEST_TRUE((is_lvalue_reference_v<int &>));
 
-        TEST_FALSE((is_rvalue_reference_v<int>));
-        TEST_TRUE((is_rvalue_reference_v<int&&>));
+	TEST_FALSE((is_rvalue_reference_v<int>));
+	TEST_TRUE((is_rvalue_reference_v<int &&>));
 
-        TEST_TRUE((is_same_v<remove_reference<int>::type, int>));
-        TEST_TRUE((is_same_v<remove_reference<int&>::type, int>));
-        TEST_TRUE((is_same_v<remove_reference<int&&>::type, int>));
+	TEST_TRUE((is_same_v<remove_reference<int>::type, int>));
+	TEST_TRUE((is_same_v<remove_reference<int &>::type, int>));
+	TEST_TRUE((is_same_v<remove_reference<int &&>::type, int>));
 
-        TEST_TRUE((is_same_v<add_lvalue_reference<int>::type, int&>));
-        TEST_TRUE((is_same_v<add_rvalue_reference<int>::type, int&&>));
+	TEST_TRUE((is_same_v<add_lvalue_reference<int>::type, int &>));
+	TEST_TRUE((is_same_v<add_rvalue_reference<int>::type, int &&>));
 
-        TEST_TRUE((is_same_v<conditional_t<true,int,void>,int>));
-        TEST_TRUE((is_same_v<conditional_t<false,int,void>,void>));
+	TEST_TRUE((is_same_v<conditional_t<true, int, void>, int>));
+	TEST_TRUE((is_same_v<conditional_t<false, int, void>, void>));
 
-        TEST_TRUE((is_convertible_v<int, float>));
-        TEST_TRUE((is_convertible_v<int, int>));
-        TEST_FALSE((is_convertible_v<int, void>));
-        TEST_FALSE((is_convertible_v<void, int>));
-        TEST_FALSE((is_convertible_v<void, int>));
+	TEST_TRUE((is_convertible_v<int, float>));
+	TEST_TRUE((is_convertible_v<int, int>));
+	TEST_FALSE((is_convertible_v<int, void>));
+	TEST_FALSE((is_convertible_v<void, int>));
+	TEST_FALSE((is_convertible_v<void, int>));
 
 	END_TEST();
 }

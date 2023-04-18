@@ -9,4 +9,4 @@
 
 #include <errno.h>
 
-#endif	// __NEKOXX_CERRNO_INC__
+#endif // __NEKOXX_CERRNO_INC__

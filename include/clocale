@@ -7,15 +7,16 @@
 #ifndef __NEKOXX_CLOCALE_INC__
 #define __NEKOXX_CLOCALE_INC__
 
-#include<locale.h>
+#include <locale.h>
 
-namespace std {
+namespace std
+{
 
-using lconv = ::lconv;
+	using lconv = ::lconv;
 
-using ::setlocale;
-using ::localeconv;
+	using ::setlocale;
+	using ::localeconv;
 
-};	// namespace std
+}; // namespace std
 
-#endif	// __NEKOXX_CLOCALE_INC__
+#endif // __NEKOXX_CLOCALE_INC__

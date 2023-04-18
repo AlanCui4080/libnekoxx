@@ -7,38 +7,39 @@
 #ifndef __NEKOXX_CSTRING_INC__
 #define __NEKOXX_CSTRING_INC__
 
-#include<string.h>
+#include <string.h>
 
-#include<cstddef>
+#include <cstddef>
 
-namespace std {
+namespace std
+{
 
-using ::strcpy;
-using ::strncpy;
-using ::strcat;
-using ::strncat;
-using ::strxfrm;
+	using ::strcpy;
+	using ::strncpy;
+	using ::strcat;
+	using ::strncat;
+	using ::strxfrm;
 
-using ::strlen;
-using ::strcmp;
-using ::strncmp;
-using ::strcoll;
-using ::strchr;
-using ::strrchr;
-using ::strspn;
-using ::strcspn;
-using ::strpbrk;
-using ::strstr;
-using ::strtok;
+	using ::strlen;
+	using ::strcmp;
+	using ::strncmp;
+	using ::strcoll;
+	using ::strchr;
+	using ::strrchr;
+	using ::strspn;
+	using ::strcspn;
+	using ::strpbrk;
+	using ::strstr;
+	using ::strtok;
 
-using ::memchr;
-using ::memcmp;
-using ::memset;
-using ::memcpy;
-using ::memmove;
+	using ::memchr;
+	using ::memcmp;
+	using ::memset;
+	using ::memcpy;
+	using ::memmove;
 
-using ::strerror;
+	using ::strerror;
 
-};	// namespace std;
+}; // namespace std
 
-#endif	// __NEKOXX_CSTRING_INC__
+#endif // __NEKOXX_CSTRING_INC__

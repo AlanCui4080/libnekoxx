@@ -11,13 +11,13 @@
 
 namespace std
 {
-class bad_alloc : public exception {
-    public:
-	virtual const char *what()
-	{
-		return "std::bad_alloc";
-	}
-};
-};
+	class bad_alloc : public exception {
+	    public:
+		virtual const char *what()
+		{
+			return "std::bad_alloc";
+		}
+	};
+}; // namespace std
 
 #endif // __NEKOXX_NEW_INC__

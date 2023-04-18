@@ -7,25 +7,26 @@
 #ifndef __NEKOXX_CCTYPE_INC__
 #define __NEKOXX_CCTYPE_INC__
 
-#include<ctype.h>
+#include <ctype.h>
 
-namespace std {
+namespace std
+{
 
-using ::isalnum;
-using ::isalpha;
-using ::islower;
-using ::isupper;
-using ::isdigit;
-using ::isxdigit;
-using ::iscntrl;
-using ::isgraph;
-using ::isspace;
-using ::isblank;
-using ::isprint;
-using ::ispunct;
-using ::tolower;
-using ::toupper;
+	using ::isalnum;
+	using ::isalpha;
+	using ::islower;
+	using ::isupper;
+	using ::isdigit;
+	using ::isxdigit;
+	using ::iscntrl;
+	using ::isgraph;
+	using ::isspace;
+	using ::isblank;
+	using ::isprint;
+	using ::ispunct;
+	using ::tolower;
+	using ::toupper;
 
-};	// namespace std
+}; // namespace std
 
-#endif	// __NEKOXX_CCTYPE_INC__
+#endif // __NEKOXX_CCTYPE_INC__

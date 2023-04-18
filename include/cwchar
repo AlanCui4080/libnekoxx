@@ -12,73 +12,73 @@
 
 namespace std
 {
-using mbstate_t = ::mbstate_t;
-using wint_t = ::wint_t;
+	using mbstate_t = ::mbstate_t;
+	using wint_t = ::wint_t;
 
-using ::wcscpy;
-using ::wcscat;
-using ::wcsncat;
-using ::wcsxfrm;
+	using ::wcscpy;
+	using ::wcscat;
+	using ::wcsncat;
+	using ::wcsxfrm;
 
-using ::wcslen;
-using ::wcscmp;
-using ::wcsncmp;
-using ::wcscoll;
-using ::wcschr;
-using ::wcsrchr;
-using ::wcsspn;
-using ::wcscspn;
-using ::wcspbrk;
-using ::wcsstr;
-using ::wcstok;
+	using ::wcslen;
+	using ::wcscmp;
+	using ::wcsncmp;
+	using ::wcscoll;
+	using ::wcschr;
+	using ::wcsrchr;
+	using ::wcsspn;
+	using ::wcscspn;
+	using ::wcspbrk;
+	using ::wcsstr;
+	using ::wcstok;
 
-using ::wmemcpy;
-using ::wmemmove;
-using ::wmemcmp;
-using ::wmemchr;
-using ::wmemset;
+	using ::wmemcpy;
+	using ::wmemmove;
+	using ::wmemcmp;
+	using ::wmemchr;
+	using ::wmemset;
 
-using ::mbsinit;
-using ::btowc;
-using ::wctob;
-using ::mbrlen;
-using ::mbrtowc;
-using ::wcrtomb;
-using ::mbsrtowcs;
-using ::wcsrtombs;
+	using ::mbsinit;
+	using ::btowc;
+	using ::wctob;
+	using ::mbrlen;
+	using ::mbrtowc;
+	using ::wcrtomb;
+	using ::mbsrtowcs;
+	using ::wcsrtombs;
 
-using ::fgetwc;
-using ::getwc;
-using ::fgetws;
-using ::fputwc;
-using ::putwc;
-using ::fputws;
-using ::getwchar;
-using ::putwchar;
-using ::ungetwc;
-using ::fwide;
-using ::wscanf;
-using ::fwscanf;
-using ::swscanf;
-using ::vwscanf;
-using ::vfwscanf;
-using ::vswscanf;
-using ::wprintf;
-using ::fwprintf;
-using ::swprintf;
+	using ::fgetwc;
+	using ::getwc;
+	using ::fgetws;
+	using ::fputwc;
+	using ::putwc;
+	using ::fputws;
+	using ::getwchar;
+	using ::putwchar;
+	using ::ungetwc;
+	using ::fwide;
+	using ::wscanf;
+	using ::fwscanf;
+	using ::swscanf;
+	using ::vwscanf;
+	using ::vfwscanf;
+	using ::vswscanf;
+	using ::wprintf;
+	using ::fwprintf;
+	using ::swprintf;
 
-using ::vwprintf;
-using ::vfwprintf;
-using ::vswprintf;
+	using ::vwprintf;
+	using ::vfwprintf;
+	using ::vswprintf;
 
-using ::wcsftime;
-using ::wcstol;
-using ::wcstoll;
-using ::wcstoul;
-using ::wcstoull;
-using ::wcstof;
-using ::wcstod;
-using ::wcstold;
-}; // namespace std;
+	using ::wcsftime;
+	using ::wcstol;
+	using ::wcstoll;
+	using ::wcstoul;
+	using ::wcstoull;
+	using ::wcstof;
+	using ::wcstod;
+	using ::wcstold;
+}; // namespace std
 
 #endif // __NEKOXX_CWCHAR_INC__

@@ -11,60 +11,61 @@
 
 #include <cstddef>
 
-namespace std {
+namespace std
+{
 
-using div_t		= ::div_t;
-using ldiv_t		= ::ldiv_t;
-using lldiv_t		= ::lldiv_t;
+	using div_t = ::div_t;
+	using ldiv_t = ::ldiv_t;
+	using lldiv_t = ::lldiv_t;
 
-using ::abort;
-using ::exit;
-using ::quick_exit;
-using ::_Exit;
-using ::atexit;
-using ::at_quick_exit;
-using ::system;
-using ::getenv;
+	using ::abort;
+	using ::exit;
+	using ::quick_exit;
+	using ::_Exit;
+	using ::atexit;
+	using ::at_quick_exit;
+	using ::system;
+	using ::getenv;
 
-using ::malloc;
-using ::aligned_alloc;
-using ::calloc;
-using ::realloc;
-using ::free;
+	using ::malloc;
+	using ::aligned_alloc;
+	using ::calloc;
+	using ::realloc;
+	using ::free;
 
-using ::atof;
+	using ::atof;
 
-using ::atoi;
-using ::atol;
-using ::atoll;
+	using ::atoi;
+	using ::atol;
+	using ::atoll;
 
-using ::strtol;
-using ::strtoll;
+	using ::strtol;
+	using ::strtoll;
 
-using ::strtoul;
-using ::strtoull;
+	using ::strtoul;
+	using ::strtoull;
 
-using ::strtof;
-using ::strtod;
-using ::strtold;
+	using ::strtof;
+	using ::strtod;
+	using ::strtold;
 
-using ::mblen;
-using ::mbtowc;
-using ::wctomb;
-using ::mbstowcs;
-using ::wcstombs;
+	using ::mblen;
+	using ::mbtowc;
+	using ::wctomb;
+	using ::mbstowcs;
+	using ::wcstombs;
 
-using ::rand;
-using ::srand;
-using ::qsort;
-using ::bsearch;
-using ::abs;
-using ::labs;
-using ::llabs;
-using ::div;
-using ::ldiv;
-using ::lldiv;
+	using ::rand;
+	using ::srand;
+	using ::qsort;
+	using ::bsearch;
+	using ::abs;
+	using ::labs;
+	using ::llabs;
+	using ::div;
+	using ::ldiv;
+	using ::lldiv;
 
-};	// namespace std
+}; // namespace std
 
 #endif // __NEKOXX_CSTDLIB_INC__

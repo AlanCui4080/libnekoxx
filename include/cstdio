@@ -7,65 +7,66 @@
 #ifndef __NEKOXX_CSTDIO_INC__
 #define __NEKOXX_CSTDIO_INC__
 
-#include<stdio.h>
+#include <stdio.h>
 
-#include<cstddef>
+#include <cstddef>
 
-namespace std {
+namespace std
+{
 
-using FILE	= ::FILE;
-using fpos_t	= ::fpos_t;
+	using FILE = ::FILE;
+	using fpos_t = ::fpos_t;
 
-using ::fopen;
-using ::freopen;
-using ::fclose;
-using ::fflush;
-using ::setbuf;
-using ::setvbuf;
+	using ::fopen;
+	using ::freopen;
+	using ::fclose;
+	using ::fflush;
+	using ::setbuf;
+	using ::setvbuf;
 
-using ::fread;
-using ::fwrite;
+	using ::fread;
+	using ::fwrite;
 
-using ::fgetc;
-using ::getc;
-using ::fputc;
-using ::putc;
-using ::fputs;
-using ::getchar;
-using ::gets;
-using ::putchar;
-using ::puts;
-using ::ungetc;
+	using ::fgetc;
+	using ::getc;
+	using ::fputc;
+	using ::putc;
+	using ::fputs;
+	using ::getchar;
+	using ::gets;
+	using ::putchar;
+	using ::puts;
+	using ::ungetc;
 
-using ::scanf;
-using ::fscanf;
-using ::sscanf;
+	using ::scanf;
+	using ::fscanf;
+	using ::sscanf;
 
-using ::vscanf;
-using ::vfscanf;
-using ::vsscanf;
+	using ::vscanf;
+	using ::vfscanf;
+	using ::vsscanf;
 
-using ::printf;
-using ::fprintf;
-using ::sprintf;
-using ::snprintf;
+	using ::printf;
+	using ::fprintf;
+	using ::sprintf;
+	using ::snprintf;
 
-using ::ftell;
-using ::fgetpos;
-using ::fseek;
-using ::fsetpos;
-using ::rewind;
+	using ::ftell;
+	using ::fgetpos;
+	using ::fseek;
+	using ::fsetpos;
+	using ::rewind;
 
-using ::clearerr;
-using ::feof;
-using ::ferror;
-using ::perror;
+	using ::clearerr;
+	using ::feof;
+	using ::ferror;
+	using ::perror;
 
-using ::remove;
-using ::rename;
-using ::tmpfile;
-using ::tmpnam;
+	using ::remove;
+	using ::rename;
+	using ::tmpfile;
+	using ::tmpnam;
 
-};	// namepspace std
+}; // namespace std
 
-#endif	// __NEKOXX_CSTDIO_INC__
+#endif // __NEKOXX_CSTDIO_INC__
