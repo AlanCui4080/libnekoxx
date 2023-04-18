@@ -1,0 +1,19 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_IOS_INC__
+#define __NEKOXX_IOS_INC__
+
+#include <cstddef>
+#include <cstdint>
+
+namespace std {
+	using streamsize	= long int;
+};	// namespace std;
+
+#include <bits/ios_base>
+
+#endif	// __NEKOXX_IOS_INC__

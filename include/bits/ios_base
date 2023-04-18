@@ -1,0 +1,167 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_BITS_IOS_BASE_INC__
+#define __NEKOXX_BITS_IOS_BASE_INC__
+
+#include<cstdio>
+#include<cstddef>
+#include<cstdint>
+#include<exception>
+#include<stdexcept>
+
+namespace std {
+	class ios_base {
+	    private:
+	    	streamsize _precision;
+		streamsize _width;
+		static int index;
+		static long int *iwords;
+		static void **pwords;
+		static size_t isize, psize;
+		
+	    public:
+		#define dopenmode(name, offset) \
+			static constexpr openmode name = 1 << offset
+		#define dfmtflags(name, offset) \
+			static constexpr fmtflags name = 1 << offset
+
+	    	using openmode = std::uint_least8_t;
+		dopenmode(app,		0);
+		dopenmode(binary,	1);
+		dopenmode(in,		2);
+		dopenmode(out,		3);
+		dopenmode(trunc,	4);
+		dopenmode(ate,		5);
+		dopenmode(noreplace,	6);
+
+		using fmtflags = std::uint_least16_t;
+		dfmtflags(dec,		0);
+		dfmtflags(oct,		1);
+		dfmtflags(hex,		2);
+		dfmtflags(left,		3);
+		dfmtflags(right,	4);
+		dfmtflags(internal,	5);
+		dfmtflags(scientific,	6);
+		dfmtflags(fixed,	7);
+		dfmtflags(boolalpha,	8);
+		dfmtflags(showbase,	9);
+		dfmtflags(showpoint,	10);
+		dfmtflags(showpos,	11);
+		dfmtflags(skipws,	12);
+		dfmtflags(unitbuf,	13);
+		dfmtflags(uppercase,	14);
+
+		static constexpr fmtflags basefield	= 0b111	<< 0;
+		static constexpr fmtflags adjustfield	= 0b111	<< 3;
+		static constexpr fmtflags floatfield	= 0b11	<< 6;
+
+		using iostate = std::uint_least8_t;
+		static constexpr iostate goodbit	= 0;
+		static constexpr iostate badbit		= 1 << 0;
+		static constexpr iostate failbit	= 1 << 1;
+		static constexpr iostate eofbit		= 1 << 2;
+
+		using seekdir = int;
+		static constexpr seekdir beg		= SEEK_SET;
+		static constexpr seekdir end		= SEEK_END;
+		static constexpr seekdir cur		= SEEK_CUR;
+
+		enum event { erase_event, imbue_event, copyfmt_event };
+		typedef void (*event_callback)(event type,
+					       ios_base &ios,
+					       int index);
+
+		#undef dopenmode
+		#undef dfmtflags
+
+	    private:
+		fmtflags _flags;
+	    public:
+
+	    	ios_base(const ios_base &other) = delete;
+		ios_base& operator= (const ios_base &other) = delete;
+		virtual ~ios_base() {}
+
+		inline fmtflags flags() const
+		{
+			return _flags;
+		}
+
+		inline fmtflags flags(fmtflags flags)
+		{
+			fmtflags old = _flags;
+			_flags = flags;
+			return old;
+		}
+
+		inline fmtflags setf(fmtflags flags)
+		{
+			fmtflags old = _flags;
+			_flags |= flags;
+			return old;
+		}
+
+		inline fmtflags setf(fmtflags flags, fmtflags mask)
+		{
+			fmtflags old = _flags;
+			_flags = _flags & (~mask) | flags;
+			return old;
+		}
+
+		inline void unsetf(fmtflags flags)
+		{
+			_flags &= ~flags;
+		}
+
+		inline streamsize precision() const
+		{
+			return _precision;
+		}
+
+		inline streamsize precison(streamsize precision)
+		{
+			streamsize old = _precision;
+			_precision = precision;
+			return old;
+		}
+
+		inline streamsize width() const
+		{
+			return _width;
+		}
+
+		inline streamsize width(streamsize width)
+		{
+			streamsize old = _width;
+			_width = width;
+			return old;
+		}
+
+		static int xalloc();
+		long int &iword(int index);
+		void *&pword(int index);
+		
+
+		class failure : public std::runtime_error {
+		    public:
+			virtual ~failure() {}
+		};
+
+		class Init {
+		    private:
+			int instanceCounter;
+		    public:
+			Init();
+			~Init();
+		};
+
+	    protected:
+		ios_base() {};
+	};
+};	// namespace std;
+
+#endif	// __NEKOXX_BITS_IOS_BASE_INC__

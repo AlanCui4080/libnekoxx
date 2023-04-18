@@ -24,6 +24,11 @@ namespace __libnekoxx
 		::free(p);
 	}
 
+	void *realloc(void *p, size_t size)
+	{
+		return ::realloc(p, size);
+	}
+
 	char *strdup(const char *src)
 	{
 		char *copy = (char *)malloc(strlen(src) + 1);

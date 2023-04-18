@@ -13,7 +13,7 @@ FIND		= find
 XARGS		= xargs
 
 OBJS		:= nekoexception.o libnekoxx.o new.o abi.o exception.o	\
-		   stdexcept.o
+		   stdexcept.o ios_base.o
 
 LIBS		:= libnekoxx.so libnekoxx.a
 
