@@ -1,0 +1,47 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_STDEXCEPT_INC__
+#define __NEKOXX_STDEXCEPT_INC__
+
+#include<nekoexception>
+#include<exception>
+#include<new>
+
+namespace std {
+	class runtime_error : public exception {
+	    private:
+		char *msg;
+		int *count;
+		void copy(const runtime_error &from) noexcept;
+		void dec_ref() noexcept;
+
+	    public:
+		runtime_error(const char *what_arg);
+		runtime_error(const runtime_error &other) noexcept
+		{
+			copy(other);
+		}
+
+		virtual ~runtime_error()
+		{
+			dec_ref();
+		}
+
+		runtime_error& operator=(const runtime_error &other)
+		{
+			copy(other);
+			return *this;
+		}
+
+		virtual const char *what() noexcept
+		{
+			return this->msg;
+		}
+	};
+};	// namespace std;
+
+#endif	// __NEKOXX_SYSTEM_ERROR_INC__
