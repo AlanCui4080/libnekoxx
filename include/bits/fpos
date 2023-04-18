@@ -1,0 +1,69 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_BITS_FPOS_INC__
+#define __NEKOXX_BITS_FPOS_INC__
+
+#include <cwchar>
+#include <ios>
+#include <bits/types>
+
+namespace __libnekoxx {
+template <class stateT>
+class fpos {
+    private:
+	stateT		_state;
+	std::streamoff	_off;
+
+    public:
+	fpos() : _off {0}, _state {0} {}
+	fpos(const std::streamoff off) : _off {off}, _state {0} {}
+
+	operator std::streamoff() const
+	{
+		return _off;
+	}
+
+	bool operator == (const fpos<stateT> &r) const
+	{
+		return _off == r._off;
+	}
+
+	bool operator != (const fpos<stateT> &r) const
+	{
+		return _off != r._off;
+	}
+
+	fpos<stateT> operator+ (const std::streamoff off) const
+	{
+		return off + _off;
+	}
+
+	fpos<stateT> operator- (const std::streamoff off) const
+	{
+		return _off - off;
+	}
+	fpos<stateT> operator- (const fpos<stateT> other) const
+	{
+		return _off - other._off;
+	}
+
+	fpos<stateT> operator+= (const std::streamoff off)
+	{
+		_off += off;
+		return *this;
+	}
+
+	fpos<stateT> operator-= (const std::streamoff off)
+	{
+		_off -= off;
+		return *this;
+	}
+};
+
+};	// namespace __libnekoxx
+
+#endif	// __NEKOXX_BITS_FPOS_INC__

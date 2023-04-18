@@ -1,0 +1,18 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_BITS_TYPES_INC__
+#define __NEKOXX_BITS_TYPES_INC__
+
+#include <cstddef>
+#include <cstdint>
+
+namespace std {
+	using streamsize	= long int;
+	using streamoff		= long long int;
+};
+
+#endif	// __NEKOXX_BITS_TYPES__INC

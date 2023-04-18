@@ -9,9 +9,12 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <bits/types>
+#include <bits/fpos>
 
 namespace std {
-	using streamsize	= long int;
+	template <class stateT>
+	using fpos = __libnekoxx::fpos<stateT>;
 };	// namespace std;
 
 #include <bits/ios_base>
