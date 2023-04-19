@@ -29,3 +29,5 @@ format:
 	@$(FIND) src -name "*.cpp" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
 	@echo Formatting Headers...
 	@$(FIND) include -name "*" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
+dist: format clean all
+	@echo Codebase is ready to release.
