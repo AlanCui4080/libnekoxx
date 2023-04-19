@@ -3,24 +3,6 @@
 #	By MIT License.
 #	Copyright (c) 2023 Ziyao and AlanCui4080.
 
-CXX		= gcc -xc++
-LD		= ld
-AR		= ar
-RANLIB		= ranlib
-RM		= rm
-CLANG_FORMAT	= clang-format
-FIND		= find
-XARGS		= xargs
-
-OBJS		:= nekoexception.o libnekoxx.o new.o abi.o exception.o
-
-LIBS		:= libnekoxx.so libnekoxx.a
-
-CXXFLAGS	+= -fno-exceptions -fno-rtti -fPIC -nostdinc++ -I../include \
-		  -std=c++17 -g -O0
-LDFLAGS		=
-
-
 CXXCODE_DIR = . ../tests
 NOSUFFIX_HEADER_DIR = ../include
 
