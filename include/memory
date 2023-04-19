@@ -13,8 +13,8 @@ namespace std
 {
 	template <class T> class allocator {
 	    public:
-		typedef T value_type;
-		typedef std::size_t size_type;
+		typedef T	       value_type;
+		typedef std::size_t    size_type;
 		typedef std::ptrdiff_t difference_type;
 
 		T *allocate(std::size_t n, const void *hint = 0)

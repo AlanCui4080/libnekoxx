@@ -24,3 +24,8 @@ all :
 	cd tests && ./run.sh
 clean : 
 	$(MAKE) -C src clean
+format:
+	@echo Formatting CXX Codes...
+	@$(FIND) src -name "*.cpp" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
+	@echo Formatting Headers...
+	@$(FIND) include -name "*" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i

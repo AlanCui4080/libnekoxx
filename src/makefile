@@ -38,10 +38,4 @@ distclean: disbuild
 	@echo Removing dep.mk
 	-@$(RM) dep.mk
 
-format:
-	@echo Formatting CXX Codes...
-	@$(FIND) $(CXXCODE_DIR) -name "*.cpp" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
-	@echo Formatting Headers...
-	@$(FIND) $(NOSUFFIX_HEADER_DIR) -name "*" -type f | $(XARGS) $(CLANG_FORMAT) -style=file --verbose -i
-
 include dep.mk

@@ -12,13 +12,13 @@
 #ifndef __NEKOXX_NEKOEXCEPTION_INC__
 #define __NEKOXX_NEKONEXCEPTION_INC__
 
-#include <stdlib.h>
 #include <setjmp.h>
+#include <stdlib.h>
 
 #include <exception>
 
 extern jmp_buf __nekoTryEnv;
-extern void *__nekoExceptionObj;
+extern void   *__nekoExceptionObj;
 
 #define __nthrow(obj)                                              \
 	do {                                                       \

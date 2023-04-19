@@ -20,7 +20,7 @@
 namespace __libnekoxx
 {
 	void *malloc(size_t size);
-	void free(void *p);
+	void  free(void *p);
 	char *strdup(const char *src);
 }; // namespace __libnekoxx
 

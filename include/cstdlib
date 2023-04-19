@@ -14,8 +14,8 @@
 namespace std
 {
 
-	using div_t = ::div_t;
-	using ldiv_t = ::ldiv_t;
+	using div_t   = ::div_t;
+	using ldiv_t  = ::ldiv_t;
 	using lldiv_t = ::lldiv_t;
 
 	using ::abort;
