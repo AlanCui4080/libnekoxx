@@ -1,0 +1,128 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_BITS_CHAR_TRAITS_INC__
+#define __NEKOXX_BITS_CHAR_TRAITS_INC__
+
+#include<cstddef>
+#include<cstdio>
+#include<cstring>
+#include<cwchar>
+
+namespace __libnekoxx {
+
+wint_t _eof(wchar_t unused)
+{
+	(void)unused;
+	return WEOF;
+}
+
+int _eof(char unused)
+{
+	(void)unused;
+	return EOF;
+}
+
+template <class charT, class intT, class posT, class offT, class stateT>
+class char_traits {
+    public:
+	using char_type		= charT;
+	using int_type		= intT;
+	using off_type		= offT;
+	using pos_type		= posT;
+	using state_type	= stateT;
+
+	static inline constexpr void assign(charT &r, const char &a) noexcept
+	{
+		r = a;
+	}
+	static constexpr char_type *assign(charT *p, std::size_t c, charT a)
+	{
+		for (int i = 0; i < c; i++)
+			p[i] = a;
+	}
+
+	static constexpr bool eq(charT a, charT b) noexcept
+	{
+		return a == b;
+	}
+
+	static constexpr bool lt(charT a, charT b) noexcept
+	{
+		return a < b;
+	}
+
+	static charT *move(charT *dest, const charT *src, std::size_t count)
+		noexcept
+	{
+		return (charT*)memmove(dest, src, sizeof(charT) * count);
+	}
+
+	static charT *copy(charT *dest, const charT *src, std::size_t count)
+		noexcept
+	{
+		return (charT*)memcpy(dest, src, sizeof(charT) * count);
+	}
+
+	static int compare(const charT *a, const charT *b, std::size_t count)
+		noexcept
+	{
+		while (count--) {
+			if (*a != *b)
+				return *a - *b;
+			a++;
+			b++;
+		}
+		return 0;
+	}
+
+	static std::size_t length(charT *s) noexcept
+	{
+		std::size_t c = 0;
+		while(*s)
+			s++, c++;
+		return c;
+	}
+
+	static const charT *find(const charT *s, std::size_t count,
+				 const charT &ch) noexcept
+	{
+		while (count--) {
+			if (*s == ch)
+				return s;
+			s++;
+		}
+		return nullptr;
+	}
+
+	static charT to_char_type(intT c) noexcept
+	{
+		return (charT)c;
+	}
+
+	static intT to_int_type(charT c) noexcept
+	{
+		return (intT)c;
+	}
+
+	static bool eq_int_type(intT c1, intT c2) noexcept
+	{
+		return c1 == c2;
+	}
+
+	static intT eof() noexcept
+	{
+		return __libnekoxx::_eof((charT)0);
+	}
+
+	static intT not_eof(intT e) noexcept
+	{
+		return eq_int_type(e, eof()) ? e : (intT)0;
+	}
+};
+};	// namespace std;
+
+#endif

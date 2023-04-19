@@ -1,0 +1,26 @@
+/*
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 Ziyao.
+ */
+
+#ifndef __NEKOXX_STRING_INC__
+#define __NEKOXX_STRING_INC__
+
+#include<bits/types>
+#include<bits/char_traits>
+#include<ios>
+
+namespace std {
+	template <class charT>
+	class char_traits {};
+	template <>
+	class char_traits<char> : public __libnekoxx::
+					char_traits<char, int, streampos,
+						    streamoff, mbstate_t>
+	{};
+
+
+};	// namespace std;
+
+#endif	// __NEKOXX_STRING_INC__

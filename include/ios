@@ -15,6 +15,11 @@
 namespace std {
 	template <class stateT>
 	using fpos = __libnekoxx::fpos<stateT>;
+
+	using streampos		= fpos<std::mbstate_t>;
+	using wstreampos	= fpos<std::mbstate_t>;
+	using u16streampos	= fpos<std::mbstate_t>;
+	using u32streampos	= fpos<std::mbstate_t>;
 };	// namespace std;
 
 #include <bits/ios_base>
