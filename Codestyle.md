@@ -8,6 +8,8 @@
 - Put a space between `new`/`delete` and `[]`
 - Comment a line with `//`, comment a block of code with `/* */`
 - Mark the end of a namespace or `#if` block with single line comments, e.g.,
+- A template argument should named like `_Abc` or `A`
+- See .clang-format
 ```
 #if __GNUC__
 #endif	// __GNUC__
