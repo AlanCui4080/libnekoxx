@@ -9,33 +9,25 @@ NOSUFFIX_HEADER_DIR = ../include
 all: dep.mk $(LIBS)
 
 dep dep.mk: $(shell ls *.cpp)
-	@echo Generating dep.mk...
-	@$(CXX) $(CXXFLAGS) -MM *.cpp > dep.mk
+	@echo [CXXDEP] $@
+	@$(CXXDEP) $(CXXFLAGS) > dep.mk
 
 %.o: %.cpp
 	@echo [CXX] $<
 	@$(CXX) $(CXXFLAGS) $< -c
 
 %.so: $(OBJS)
-	@echo Linking dynamic library...
+	@echo [LD] $@
 	@$(LD) $(LDFLAGS) $(OBJS) -shared -o $@
 
 %.a: $(OBJS)
-	@echo Archiving static library...
+	@echo [AR] $@
 	@$(AR) rc $@ $(OBJS)
-	@echo Running runlib...
+	@echo [RANLIB] $@
 	@$(RANLIB) $@
 
 clean:
-	@echo Removing object files...
-	-@$(RM) $(OBJS)
-
-disbuild: clean
-	@echo Removing libraries...
-	-@$(RM) $(LIBS)
-
-distclean: disbuild
-	@echo Removing dep.mk
-	-@$(RM) dep.mk
+	@echo [RM] $(LIBS) $(OBJS) dep.mk
+	-@$(RM) -f $(LIBS) $(OBJS) dep.mk
 
 include dep.mk
