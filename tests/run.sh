@@ -5,6 +5,7 @@ CXX="gcc -xc++"
 RED=$(printf "\033[31m")
 GREEN=$(printf "\033[32m")
 YELLOW=$(printf "\033[33m")
+PINK=$(printf "\033[35m")
 NONE=$(printf "\033[39m")
 
 compile() {
@@ -17,27 +18,26 @@ compile() {
 }
 
 check_run() {
-	printf "$1 ........ "
 	if /tmp/nekoxxtest.exec > /tmp/nekoxxtest.output
 	then
-		echo $GREEN "[AC]" $NONE
+		echo -n $GREEN"[AC]" $NONE "$1\n"
 	else
-		echo $YELLOW "[RE]" $NONE
+		echo -n $PINK"[RE]" $NONE "$1\n"
 		cat /tmp/nekoxxtest.output
 	fi
 }
 
 run_and_cmp() {
-	printf "$1 ....... "
 	if ! /tmp/nekoxxtest.exec > /tmp/nekoxxtest.output
 	then
-		echo $YELLOW "[RE]" $NONE
+		echo -n $PINK"[RE]" $NONE "$1\n"
+		ERR=1;
 	else
 		if diff /tmp/nekoxxtest.output $1.expect > /tmp/nekoxxtest.diff
 		then
-			echo $GREEN "[AC]" $NONE
+			echo -n $GREEN"[AC]" $NONE "$1\n"
 		else
-			echo $RED "[WA]" $NONE
+			echo -n $RED"[WA]" $NONE "$1\n"
 			cat /tmp/nekoxxtest.diff
 		fi
 	fi
@@ -46,7 +46,8 @@ run_and_cmp() {
 run_test() {
 	if compile $1
 	then
-		echo "$1 ....... ${RED}[CE]${NONE}"
+		echo "${YELLOW}[CE]${NONE} $1"
+		cat /tmp/nekoxxtest.complier
 		return 1;
 	fi
 
