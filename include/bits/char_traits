@@ -14,17 +14,12 @@
 
 namespace __libnekoxx {
 
-wint_t _eof(wchar_t unused)
-{
-	(void)unused;
-	return WEOF;
-}
-
-int _eof(char unused)
-{
-	(void)unused;
-	return EOF;
-}
+template <class T>
+constexpr T eof_helper_v = 0;
+template <> 
+constexpr wint_t eof_helper_v<wint_t> = WEOF;
+template <> 
+constexpr int eof_helper_v<int> = EOF;
 
 template <class charT, class intT, class posT, class offT, class stateT>
 class char_traits {
@@ -115,7 +110,7 @@ class char_traits {
 
 	static intT eof() noexcept
 	{
-		return __libnekoxx::_eof((charT)0);
+		return __libnekoxx::eof_helper_v<charT>;
 	}
 
 	static intT not_eof(intT e) noexcept
