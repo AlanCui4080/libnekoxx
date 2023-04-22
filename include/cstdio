@@ -33,7 +33,6 @@ namespace std
 	using ::putc;
 	using ::fputs;
 	using ::getchar;
-	using ::gets;
 	using ::putchar;
 	using ::puts;
 	using ::ungetc;
