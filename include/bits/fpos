@@ -12,10 +12,10 @@
 #include <bits/types>
 
 namespace __libnekoxx {
-template <class stateT>
+template <class _State>
 class fpos {
     private:
-	stateT		_state;
+	_State		_state;
 	std::streamoff	_off;
 
     public:
@@ -27,37 +27,37 @@ class fpos {
 		return _off;
 	}
 
-	bool operator == (const fpos<stateT> &r) const
+	bool operator == (const fpos<_State> &r) const
 	{
 		return _off == r._off;
 	}
 
-	bool operator != (const fpos<stateT> &r) const
+	bool operator != (const fpos<_State> &r) const
 	{
 		return _off != r._off;
 	}
 
-	fpos<stateT> operator+ (const std::streamoff off) const
+	fpos<_State> operator+ (const std::streamoff off) const
 	{
 		return off + _off;
 	}
 
-	fpos<stateT> operator- (const std::streamoff off) const
+	fpos<_State> operator- (const std::streamoff off) const
 	{
 		return _off - off;
 	}
-	fpos<stateT> operator- (const fpos<stateT> other) const
+	fpos<_State> operator- (const fpos<_State> other) const
 	{
 		return _off - other._off;
 	}
 
-	fpos<stateT> operator+= (const std::streamoff off)
+	fpos<_State> operator+= (const std::streamoff off)
 	{
 		_off += off;
 		return *this;
 	}
 
-	fpos<stateT> operator-= (const std::streamoff off)
+	fpos<_State> operator-= (const std::streamoff off)
 	{
 		_off -= off;
 		return *this;

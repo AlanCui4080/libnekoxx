@@ -21,48 +21,48 @@ constexpr wint_t eof_helper_v<wint_t> = WEOF;
 template <> 
 constexpr int eof_helper_v<int> = EOF;
 
-template <class charT, class intT, class posT, class offT, class stateT>
+template <class _Char, class _Int, class _Pos, class _Off, class _State>
 class char_traits {
     public:
-	using char_type		= charT;
-	using int_type		= intT;
-	using off_type		= offT;
-	using pos_type		= posT;
-	using state_type	= stateT;
+	using char_type		= _Char;
+	using int_type		= _Int;
+	using off_type		= _Off;
+	using pos_type		= _Pos;
+	using state_type	= _State;
 
-	static inline constexpr void assign(charT &r, const char &a) noexcept
+	static inline constexpr void assign(_Char &r, const char &a) noexcept
 	{
 		r = a;
 	}
-	static constexpr char_type *assign(charT *p, std::size_t c, charT a)
+	static constexpr char_type *assign(_Char *p, std::size_t c, _Char a)
 	{
 		for (int i = 0; i < c; i++)
 			p[i] = a;
 	}
 
-	static constexpr bool eq(charT a, charT b) noexcept
+	static constexpr bool eq(_Char a, _Char b) noexcept
 	{
 		return a == b;
 	}
 
-	static constexpr bool lt(charT a, charT b) noexcept
+	static constexpr bool lt(_Char a, _Char b) noexcept
 	{
 		return a < b;
 	}
 
-	static charT *move(charT *dest, const charT *src, std::size_t count)
+	static _Char *move(_Char *dest, const _Char *src, std::size_t count)
 		noexcept
 	{
-		return (charT*)memmove(dest, src, sizeof(charT) * count);
+		return static_cast<_Char*>(memmove(dest, src, sizeof(_Char) * count));
 	}
 
-	static charT *copy(charT *dest, const charT *src, std::size_t count)
+	static _Char *copy(_Char *dest, const _Char *src, std::size_t count)
 		noexcept
 	{
-		return (charT*)memcpy(dest, src, sizeof(charT) * count);
+		return static_cast<_Char*>(memcpy(dest, src, sizeof(_Char) * count));
 	}
 
-	static int compare(const charT *a, const charT *b, std::size_t count)
+	static int compare(const _Char *a, const _Char *b, std::size_t count)
 		noexcept
 	{
 		while (count--) {
@@ -74,7 +74,7 @@ class char_traits {
 		return 0;
 	}
 
-	static std::size_t length(charT *s) noexcept
+	static std::size_t length(_Char *s) noexcept
 	{
 		std::size_t c = 0;
 		while(*s)
@@ -82,8 +82,8 @@ class char_traits {
 		return c;
 	}
 
-	static const charT *find(const charT *s, std::size_t count,
-				 const charT &ch) noexcept
+	static const _Char *find(const _Char *s, std::size_t count,
+				 const _Char &ch) noexcept
 	{
 		while (count--) {
 			if (*s == ch)
@@ -93,29 +93,29 @@ class char_traits {
 		return nullptr;
 	}
 
-	static charT to_char_type(intT c) noexcept
+	static _Char to_char_type(_Int c) noexcept
 	{
-		return (charT)c;
+		return static_cast<_Char>(c);
 	}
 
-	static intT to_int_type(charT c) noexcept
+	static _Int to_int_type(_Char c) noexcept
 	{
-		return (intT)c;
+		return static_cast<_Int>(c);
 	}
 
-	static bool eq_int_type(intT c1, intT c2) noexcept
+	static bool eq_int_type(_Int c1, _Int c2) noexcept
 	{
 		return c1 == c2;
 	}
 
-	static intT eof() noexcept
+	static _Int eof() noexcept
 	{
-		return __libnekoxx::eof_helper_v<charT>;
+		return __libnekoxx::eof_helper_v<_Char>;
 	}
 
-	static intT not_eof(intT e) noexcept
+	static _Int not_eof(_Int e) noexcept
 	{
-		return eq_int_type(e, eof()) ? e : (intT)0;
+		return eq_int_type(e, eof()) ? e : static_cast<_Int>(0);
 	}
 };
 };	// namespace std;

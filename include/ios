@@ -13,8 +13,8 @@
 #include <bits/fpos>
 
 namespace std {
-	template <class stateT>
-	using fpos = __libnekoxx::fpos<stateT>;
+	template <class _State>
+	using fpos = __libnekoxx::fpos<_State>;
 
 	using streampos		= fpos<std::mbstate_t>;
 	using wstreampos	= fpos<std::mbstate_t>;
