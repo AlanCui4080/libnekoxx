@@ -77,5 +77,16 @@ int main()
         TEST_FALSE((is_convertible_v<void, int>));
         TEST_FALSE((is_convertible_v<void, int>));
 
+	TEST_FALSE((is_const_v<int>));
+	TEST_FALSE((is_const_v<const int*>));
+	TEST_FALSE((is_const_v<int const*>));
+	TEST_TRUE((is_const_v<const int>));
+
+	TEST_FALSE((is_volatile_v<int>));
+	TEST_FALSE((is_volatile_v<volatile int*>));
+	TEST_FALSE((is_volatile_v<int volatile*>));
+	TEST_TRUE((is_volatile_v<volatile int>));
+
+
 	END_TEST();
 }
