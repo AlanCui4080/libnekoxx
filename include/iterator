@@ -12,52 +12,180 @@
 namespace std
 {
 
-struct input_iterator_tag {};
-struct output_iterator_tag {};
-struct forward_iterator_tag : public input_iterator_tag {};
-struct bidirectional_iterator_tag : public forward_iterator_tag {};
-struct random_access_iterator_tag : public bidirectional_iterator_tag {};
+	struct input_iterator_tag {};
+	struct output_iterator_tag {};
+	struct forward_iterator_tag : public input_iterator_tag {};
+	struct bidirectional_iterator_tag : public forward_iterator_tag {};
+	struct random_access_iterator_tag : public bidirectional_iterator_tag {
+	};
 
-template <class _Cat, class T, class _Dis = std::ptrdiff_t, class _Ptr = T *,
-	  class _Ref = T &>
-struct [[deprecated]] iterator {
-	using iterator_category = _Cat;
-	using difference_type = _Dis;            
-	using value_type = T;
-	using pointer = _Ptr;
-	using reference = _Ref;
-};
+	template <class _Cat, class T, class _Dis = std::ptrdiff_t,
+		  class _Ptr = T *, class _Ref = T &>
+	struct [[deprecated]] iterator {
+		using iterator_category = _Cat;
+		using difference_type = _Dis;
+		using value_type = T;
+		using pointer = _Ptr;
+		using reference = _Ref;
+	};
 
-template <class _It> struct iterator_traits {
-	using difference_type = _It::difference_type;
-	using value_type = _It::value_type;
-	using pointer = _It::pointer;
-	using reference = _It::reference;
-	using iterator_category = _It::iterator_category;
-};
-template <class T> struct iterator_traits<T *>{
-	using difference_type = std::ptrdiff_t;
-	using value_type = T;
-	using pointer = T*;
-	using reference = T&;
-	using iterator_category = std::random_access_iterator_tag;
-};
-template <class T> struct iterator_traits<const T *> {
-	using difference_type = std::ptrdiff_t;
-	using value_type = T;
-	using pointer = const T*;
-	using reference = const T&;
-	using iterator_category = std::random_access_iterator_tag;
-};
+	template <class _It> struct iterator_traits {
+		using difference_type = _It::difference_type;
+		using value_type = _It::value_type;
+		using pointer = _It::pointer;
+		using reference = _It::reference;
+		using iterator_category = _It::iterator_category;
+	};
+	template <class T> struct iterator_traits<T *> {
+		using difference_type = std::ptrdiff_t;
+		using value_type = T;
+		using pointer = T *;
+		using reference = T &;
+		using iterator_category = std::random_access_iterator_tag;
+	};
+	template <class T> struct iterator_traits<const T *> {
+		using difference_type = std::ptrdiff_t;
+		using value_type = T;
+		using pointer = const T *;
+		using reference = const T &;
+		using iterator_category = std::random_access_iterator_tag;
+	};
+	namespace __libnekoxx
+	{
+		template <class _ItT> class iterator_numoperator {
+		    private:
+			constexpr _ItT::iterator_type __current;
 
-template <class _It> class move_iterator {
-    public:
-	using iterator_type = _It;
-	using difference_type = std::iterator_traits<_It>::difference_type;
-	using value_type = std::iterator_traits<_It>::value_type;
-	using pointer = _It;
-	using reference = std::iterator_traits<_It>::reference;
-	using iterator_category = std::iterator_traits<_It>::iterator_category;
-};
-}
+		    public:
+			constexpr _ItT::iterator_type base() const
+			{
+				return __current;
+			};
+			constexpr auto current = base();
+			virtual _ItT *&gthis() const = 0;
+			virtual constexpr _ItT &operator++()
+			{
+				++__current;
+				return *gthis();
+			}
+			virtual constexpr _ItT &operator--()
+			{
+				--__current;
+				return *gthis();
+			}
+			virtual constexpr _ItT operator++(int)
+			{
+				__current++;
+				return *gthis();
+			}
+			virtual constexpr _ItT operator--(int)
+			{
+				__current--;
+				return *gthis();
+			}
+			virtual constexpr _ItT &
+			operator+=(_ItT::difference_type n)
+			{
+				__current += n;
+				return *gthis();
+			}
+			virtual constexpr _ItT &
+			operator-=(_ItT::difference_type n)
+			{
+				__current -= n;
+				return *gthis();
+			}
+			virtual constexpr _ItT
+			operator+(_ItT::difference_type n) const
+			{
+				__current += n;
+				auto tmp = gthis();
+				__current -= n;
+				return *tmp;
+			}
+			virtual constexpr _ItT
+			operator-(_ItT::difference_type n) const
+			{
+				__current -= n;
+				auto tmp = gthis();
+				__current += n;
+				return *tmp;
+			}
+		}
+	} // namespace __libnekoxx
+
+	template <class _It>
+	class move_iterator
+		: public __libnekoxx::iterator_numoperator<move_iterator> {
+	    public:
+		using iterator_type = _It;
+		using difference_type =
+			std::iterator_traits<_It>::difference_type;
+		using value_type = std::iterator_traits<_It>::value_type;
+		using pointer = _It;
+		using reference = std::iterator_traits<_It>::reference;
+		using iterator_category =
+			std::iterator_traits<_It>::iterator_category;
+		move_iterator *&gthis() const
+		{
+			return this;
+		}
+	};
+	template <class _It0, class _It1>
+	constexpr bool operator==(const std::move_iterator<_It0> &lhs,
+				  const std::move_iterator<_It1> &rhs)
+	{
+		return lhs.__current == rhs.__current;
+	}
+	template <class _It0, class _It1>
+	constexpr bool operator!=(const std::move_iterator<_It0> &lhs,
+				  const std::move_iterator<_It1> &rhs)
+	{
+		return !(lhs == rhs);
+	}
+	template <class _It0, class _It1>
+	constexpr bool operator<(const std::move_iterator<_It0> &lhs,
+				 const std::move_iterator<_It1> &rhs)
+	{
+		return lhs.__current < rhs.__current;
+	}
+	template <class _It0, class _It1>
+	constexpr bool operator<=(const std::move_iterator<_It0> &lhs,
+				  const std::move_iterator<_It1> &rhs)
+	{
+		return !(rhs < lhs);
+	}
+	template <class _It0, class _It1>
+	constexpr bool operator>(const std::move_iterator<_It0> &lhs,
+				 const std::move_iterator<_It1> &rhs)
+	{
+		return rhs < lhs;
+	}
+	template <class _It0, class _It1>
+	constexpr bool operator>=(const std::move_iterator<_It0> &lhs,
+				  const std::move_iterator<_It1> &rhs)
+	{
+		return !(lhs < rhs);
+	}
+	template <class _It> class reverse_iterator {
+	    public:
+		using iterator_type = _It;
+		using difference_type =
+			std::iterator_traits<_It>::difference_type;
+		using value_type = std::iterator_traits<_It>::value_type;
+		using pointer = std::iterator_traits<_It>::pointer;
+		using reference = std::iterator_traits<_It>::reference;
+		using iterator_category =
+			std::iterator_traits<_It>::iterator_category;
+	};
+	template <class _Con> class back_insert_iterator {
+	    public:
+		using iterator_category = std::output_iterator_tag;
+		using difference_type = void;
+		using value_type = void;
+		using pointer = void;
+		using reference = void;
+		using container_type = _Con;
+	};
+} // namespace std
 #endif //__NEKOXX_ITERATOR_INC__
