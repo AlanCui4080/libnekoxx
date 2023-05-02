@@ -135,7 +135,7 @@ namespace std
 	constexpr bool operator==(const std::move_iterator<_It0> &lhs,
 				  const std::move_iterator<_It1> &rhs)
 	{
-		return lhs.__current == rhs.__current;
+		return lhs.base() == rhs.base() t;
 	}
 	template <class _It0, class _It1>
 	constexpr bool operator!=(const std::move_iterator<_It0> &lhs,
@@ -147,7 +147,7 @@ namespace std
 	constexpr bool operator<(const std::move_iterator<_It0> &lhs,
 				 const std::move_iterator<_It1> &rhs)
 	{
-		return lhs.__current < rhs.__current;
+		return lhs.base() < rhs.base();
 	}
 	template <class _It0, class _It1>
 	constexpr bool operator<=(const std::move_iterator<_It0> &lhs,
@@ -178,7 +178,7 @@ namespace std
 		using iterator_category =
 			std::iterator_traits<_It>::iterator_category;
 	};
-	template <class _Con> class back_insert_iterator {
+	template <class _Con> class insert_iterator {
 	    public:
 		using iterator_category = std::output_iterator_tag;
 		using difference_type = void;
@@ -187,5 +187,29 @@ namespace std
 		using reference = void;
 		using container_type = _Con;
 	};
+	template <class _Con>
+	class back_insert_iterator : public insert_iterator {
+	};
+	template <class _Con>
+	class front_insert_iterator : public insert_iterator {
+	};
+	template <class _Con>
+	insert_iterator<_Con> inserter(_Con &c, typename _Con::iterator i)
+	{
+		return insert_iterator<Container>(c, i);
+	}
+	template <class _Con>
+	front_insert_iterator<_Con> front_inserter(_Con &c,
+						   typename _Con::iterator i)
+	{
+		return front_insert_iterator<Container>(c);
+	}
+	template <class _Con>
+	back_insert_iterator<_Con> back_inserter(_Con &c,
+						 typename _Con::iterator i)
+	{
+		return back_insert_iterator<Container>(c);
+	}
+
 } // namespace std
 #endif //__NEKOXX_ITERATOR_INC__
