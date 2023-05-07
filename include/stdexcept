@@ -1,0 +1,45 @@
+/*	-*- C++ -*-
+ *	libnekoxx
+ *	By MIT License.
+ *	Copyright (c) 2023 AlanCui4080.
+ */
+#include <exception>
+namespace std
+{
+	class logic_error : public exception {
+	    public:
+		explicit logic_error(const char *what_arg);
+	};
+	class domain_error {
+	    public:
+		explicit domain_error(const char *what_arg);
+	};
+	class invalid_argument {
+	    public:
+		explicit invalid_argument(const char *what_arg);
+	};
+	class length_error {
+	    public:
+		explicit length_error(const char *what_arg);
+	};
+	class out_of_range {
+	    public:
+		explicit out_of_range(const char *what_arg);
+	};
+	class runtime_error {
+	    public:
+		explicit runtime_error(const char *what_arg);
+	};
+	class range_error {
+	    public:
+		explicit range_error(const char *what_arg);
+	};
+	class overflow_error {
+	    public:
+		explicit overflow_error(const char *what_arg);
+	};
+	class underflow_error {
+	    public:
+		explicit underflow_error(const char *what_arg)
+	};
+} // namespace std
