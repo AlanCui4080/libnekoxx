@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <nekoexception>
+#include <bits/nekoexception>
 #include <new>
 
 #include <bits/libnekoxx>
