@@ -18,7 +18,7 @@ export OBJS		:= nekoexception.o libnekoxx.o new.o abi.o exception.o
 export LIBS		:= libnekoxx.so libnekoxx.a
 
 export CXXFLAGS	+= -fno-exceptions -fno-rtti -fPIC -nostdinc++ -I../include \
-		  -std=c++17 -g -O0
+		  -std=c++17 -g -O0 -fsanitize=undefined -fsanitize=address -fsanitize=thread
 export LDFLAGS		=
 all : 
 	@$(MAKE) -C src
