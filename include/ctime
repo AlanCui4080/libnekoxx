@@ -12,10 +12,10 @@
 namespace std
 {
 
-	using clock_t = ::clock_t;
-	using size_t = ::size_t;
-	using time_t = ::time_t;
-	using tm = ::tm;
+	using clock_t  = ::clock_t;
+	using size_t   = ::size_t;
+	using time_t   = ::time_t;
+	using tm       = ::tm;
 	using timespec = ::timespec;
 
 	using ::clock;

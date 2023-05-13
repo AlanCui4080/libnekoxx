@@ -7,9 +7,9 @@
 #ifndef __NEKOXX_EXCEPTION_INC__
 #define __NEKOXX_EXCEPTION_INC__
 
+#include <setjmp.h>
 #include <stdlib.h>
 #include <string.h>
-#include <setjmp.h>
 
 #include <bits/libnekoxx>
 

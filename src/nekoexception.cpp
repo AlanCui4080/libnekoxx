@@ -6,7 +6,7 @@
 
 #include <setjmp.h>
 
-#include <nekoexception>
+#include <bits/nekoexception>
 
 jmp_buf __nekoTryEnv;
-void *__nekoExceptionObj;
+void   *__nekoExceptionObj;

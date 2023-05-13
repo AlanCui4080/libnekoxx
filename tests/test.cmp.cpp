@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <nekoexception>
+#include <bits/nekoexception>
 #include <exception>
 #include <new>
 

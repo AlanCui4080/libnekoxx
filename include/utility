@@ -82,7 +82,7 @@ template <size_t I, class T1, class T2>
 constexpr const tuple_element_t<I, pair<T1, T2>> &
 get(const pair<T1, T2> &) noexcept;
 template <size_t I, class T1, class T2>
-constexpr const tuple_element_t<I, pair<T1, T2>> &&
+constexpr const tuple_element_t<I, pair<T1, T2>>					     &&
 get(const pair<T1, T2> &&) noexcept;
 template <class T1, class T2> constexpr T1 &get(pair<T1, T2> &p) noexcept;
 template <class T1, class T2>
@@ -143,7 +143,7 @@ move_if_noexcept(T &x) noexcept;
 
 // as_const
 template <class T> constexpr add_const_t<T> &as_const(T &t) noexcept;
-template <class T> void as_const(const T &&) = delete;
+template <class T> void			     as_const(const T &&) = delete;
 
 // unreachable
 [[noreturn]] void unreachable();

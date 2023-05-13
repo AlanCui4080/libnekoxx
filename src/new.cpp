@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <nekoexception>
+#include <bits/nekoexception>
 #include <new>
 
 #include <bits/libnekoxx>
@@ -27,7 +27,7 @@ void *operator new(size_t count)
 {
 	void *p = __libnekoxx::malloc(count);
 	if (!p)
-		__nthrow(std::bad_alloc());
+		__libnekoxx::nthrow<std::bad_alloc>();
 	return p;
 }
 
@@ -35,7 +35,7 @@ void *operator new[](size_t count)
 {
 	void *p = __libnekoxx::malloc(count);
 	if (!p)
-		__nthrow(std::bad_alloc());
+		__libnekoxx::nthrow<std::bad_alloc>();
 	return p;
 }
 

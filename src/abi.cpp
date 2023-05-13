@@ -29,7 +29,7 @@ void __cxa_finalize(void *d)
 		for (int i = 0; i < count; i++) {
 			if (destructors[i].f) {
 				void (*f)(void *) = destructors[i].f;
-				destructors[i].f = 0;
+				destructors[i].f  = 0;
 				f(destructors[i].a);
 			}
 		}
@@ -39,7 +39,7 @@ void __cxa_finalize(void *d)
 	for (int i = 0; i < count; i++) {
 		if (destructors[i].f && destructors[i].d == d) {
 			void (*f)(void *) = destructors[i].f;
-			destructors[i].f = 0;
+			destructors[i].f  = 0;
 			f(destructors[i].a);
 		}
 	}
@@ -66,7 +66,7 @@ int __cxa_atexit(void (*destructor)(void *), void *arg, void *dso)
 	destructors[i].f = destructor;
 	destructors[i].a = arg;
 	destructors[i].d = dso;
-	count = i + 1;
+	count		 = i + 1;
 
 	return 0;
 }

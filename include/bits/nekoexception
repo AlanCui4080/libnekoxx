@@ -1,7 +1,7 @@
 /*	-*- C++ -*-
  *	libnekoxx
  *	By MIT License.
- *	Copyright (c) 2023 Ziyao.
+ *	Copyright (c) 2023 Ziyao and AlanCui4080.
  */
 
 /*
@@ -12,22 +12,25 @@
 #ifndef __NEKOXX_NEKOEXCEPTION_INC__
 #define __NEKOXX_NEKONEXCEPTION_INC__
 
-#include <stdlib.h>
 #include <setjmp.h>
+#include <stdlib.h>
 
 #include <exception>
 
 extern jmp_buf __nekoTryEnv;
-extern void *__nekoExceptionObj;
+extern void   *__nekoExceptionObj;
 
-#define __nthrow(obj)                                              \
-	do {                                                       \
-		if (!__nekoExceptionObj)                           \
-			std::terminate();                          \
-		__nekoExceptionObj = new (__nekoExceptionObj) obj; \
-		longjmp(__nekoTryEnv, 1);                          \
-	} while (0)
-
+namespace __libnekoxx
+{
+	template <class T>
+	[[noreturn]]void nthrow(void)
+	{
+		if(!__nekoExceptionObj)
+			std::terminate();
+		__nekoExceptionObj = new (__nekoExceptionObj) T();
+		longjmp(__nekoTryEnv, 1);
+	}
+}
 #define __ntry                                    \
 	{                                         \
 		int __exception[64];              \

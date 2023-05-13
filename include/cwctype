@@ -15,8 +15,8 @@ namespace std
 {
 
 	using wctrans_t = ::wctrans_t;
-	using wctype_t = ::wctype_t;
-	using wint_t = ::wint_t;
+	using wctype_t	= ::wctype_t;
+	using wint_t	= ::wint_t;
 
 	using ::iswalnum;
 	using ::iswalpha;

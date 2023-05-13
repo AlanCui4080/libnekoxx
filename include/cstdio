@@ -14,7 +14,7 @@
 namespace std
 {
 
-	using FILE = ::FILE;
+	using FILE   = ::FILE;
 	using fpos_t = ::fpos_t;
 
 	using ::fopen;
